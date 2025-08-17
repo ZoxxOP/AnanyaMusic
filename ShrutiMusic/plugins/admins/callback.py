@@ -23,7 +23,7 @@
 import asyncio
 
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InputMediaVideo
 
 from ShrutiMusic import YouTube, app
 from ShrutiMusic.core.call import Aviax
