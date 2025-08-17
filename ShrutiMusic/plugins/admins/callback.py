@@ -61,6 +61,30 @@ import config
 checker = {}
 upvoters = {}
 
+Shruti_Repo = "https://files.catbox.moe/tub372.mp4"
+
+@app.on_callback_query(filters.regex("show_video_panel"))
+async def show_video_callback(_, query):
+    await query.answer()
+    try:
+        await query.message.edit_media(
+            media=InputMediaVideo(
+                media=Shruti_Repo,
+                has_spoiler=True,
+            ),
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="‹ ʙᴀᴄᴋ", callback_data="settingsback_helper"
+                        )
+                    ]
+                ]
+            ),
+        )
+    except Exception as e:
+        await query.message.reply_text(f"Failed to show video: {e}")
+
 from config import SUPPORT_GROUP
 @app.on_callback_query(filters.regex("help_page_1"))
 async def show_help_page1(client, callback_query: CallbackQuery):
