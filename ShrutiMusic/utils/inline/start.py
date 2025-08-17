@@ -1,6 +1,6 @@
 from pyrogram.types import InlineKeyboardButton
 import config
-from AnanyaMusic import app
+from ShrutiMusic import app
 
 def start_panel(_):
     buttons = [
