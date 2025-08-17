@@ -31,8 +31,8 @@ def private_panel(_):
                 callback_data="about_page"
             ),
             InlineKeyboardButton(
-                text=_["S_B_12"],
-                callback_data="owner_page"
+                text=_["L_N_G"],
+                callback_data="about_page"
             )
         ],
         [
