@@ -32,7 +32,7 @@ def private_panel(_):
             ),
             InlineKeyboardButton(
                 text=_["L_N_G"],
-                callback_data="about_page"
+                callback_data="LG"
             )
         ],
         [
