@@ -1,25 +1,3 @@
-# Copyright (c) 2025 Nand Yaduwanshi <NoxxOP>
-# Location: Supaul, Bihar
-#
-# All rights reserved.
-#
-# This code is the intellectual property of Nand Yaduwanshi.
-# You are not allowed to copy, modify, redistribute, or use this
-# code for commercial or personal projects without explicit permission.
-#
-# Allowed:
-# - Forking for personal learning
-# - Submitting improvements via pull requests
-#
-# Not Allowed:
-# - Claiming this code as your own
-# - Re-uploading without credit or permission
-# - Selling or using commercially
-#
-# Contact for permissions:
-# Email: badboy809075@gmail.com
-
-
 from typing import Union
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from ShrutiMusic import app
@@ -138,6 +116,12 @@ def help_pannel_page4(_, START: Union[bool, int] = None):
             ],
             [
                 InlineKeyboardButton(text=_["H_B_36"], callback_data="help_callback hb36"),
+            ], 
+            [
+                InlineKeyboardButton(text=_["H_B_37"], callback_data="help_callback hb37"),
+            ],
+            [
+                InlineKeyboardButton(text=_["H_B_38"], callback_data="help_callback hb38"),
             ],   
             [
                 InlineKeyboardButton(
@@ -173,13 +157,3 @@ def private_help_panel(_):
     ]
 
 
-# ©️ Copyright Reserved - @NoxxOP  Nand Yaduwanshi
-
-# ===========================================
-# ©️ 2025 Nand Yaduwanshi (aka @NoxxOP)
-# 🔗 GitHub : https://github.com/NoxxOP/ShrutiMusic
-# 📢 Telegram Channel : https://t.me/ShrutiBots
-# ===========================================
-
-
-# ❤️ Love From ShrutiBots 
