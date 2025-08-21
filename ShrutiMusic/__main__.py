@@ -32,6 +32,8 @@ COMMANDS = [
     BotCommand("authusers", "👥 Show list of auth users"),
     BotCommand("cplay", "📻 Channel audio play"),
     BotCommand("cvplay", "📺 Channel video play"),
+    BotCommand("sg", "🔎 Show history of any user"),
+    BotCommand("shayri", "🌾 Shyari fun love"),          
     BotCommand("cplayforce", "🚨 Channel force audio play"),
     BotCommand("cvplayforce", "🚨 Channel force video play"),
     BotCommand("channelplay", "🔗 Connect group to channel"),
