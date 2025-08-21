@@ -346,4 +346,6 @@ Show Full Details """
 
 HELP_38 = """ 🌾<b>See Funny or love Shayri</b>
 
-• /shayri /shayari /sari  get shayri those commonds """
+• /shayri /shayari /sari /shari  get shayri those commonds
+
+• /love /gf /bf get love shayari """
