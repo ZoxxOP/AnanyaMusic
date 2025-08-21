@@ -192,8 +192,8 @@ async def shayari_group(client: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("❣️ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 ❣️", url="https://t.me/ShrutiBotSupport"),
-                InlineKeyboardButton("💖 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 💖", url="https://t.me/ShrutiBots")
+                InlineKeyboardButton("❣️ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 ❣️", url="https://t.me/AnanyaBotSupport"),
+                InlineKeyboardButton("💖 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 💖", url="https://t.me/AnanyaBots")
             ],
             [
                 InlineKeyboardButton("🎁 𝐌𝐨𝐫𝐞 𝐒𝐡𝐚𝐲𝐚𝐫𝐢 🎁", callback_data="more_shayari")
@@ -237,8 +237,8 @@ async def shayari_private(client: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("❣️ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 ❣️", url="https://t.me/ShrutiBotSupport"),
-                InlineKeyboardButton("💖 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 💖", url="https://t.me/ShrutiBots")
+                InlineKeyboardButton("❣️ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 ❣️", url="https://t.me/AnanyaBotSupport"),
+                InlineKeyboardButton("💖 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 💖", url="https://t.me/AnanyaBots")
             ],
             [
                 InlineKeyboardButton("🎁 𝐌𝐨𝐫𝐞 𝐒𝐡𝐚𝐲𝐚𝐫𝐢 🎁", callback_data="more_shayari")
@@ -282,8 +282,8 @@ async def more_shayari_callback(client, callback_query):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("❣️ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 ❣️", url="https://t.me/ShrutiBotSupport"),
-                InlineKeyboardButton("💖 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 💖", url="https://t.me/ShrutiBots")
+                InlineKeyboardButton("❣️ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 ❣️", url="https://t.me/AnanyaBotSupport"),
+                InlineKeyboardButton("💖 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 💖", url="https://t.me/AnanyaBots")
             ],
             [
                 InlineKeyboardButton("🎁 𝐌𝐨𝐫𝐞 𝐒𝐡𝐚𝐲𝐚𝐫𝐢 🎁", callback_data="more_shayari")
