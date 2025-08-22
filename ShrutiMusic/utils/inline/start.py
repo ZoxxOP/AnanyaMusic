@@ -8,7 +8,7 @@ def start_panel(_):
             InlineKeyboardButton(
                 text=_["S_B_1"], url=f"https://t.me/{app.username}?startgroup=true"
             ),
-            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHANNEL),
+            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_GROUP),
         ],
         [
             InlineKeyboardButton(text=_["L_N_G"], callback_data="LG"),
