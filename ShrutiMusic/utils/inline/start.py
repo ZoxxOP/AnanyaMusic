@@ -27,20 +27,20 @@ def private_panel(_):
         ],
         [
             InlineKeyboardButton(
-                text=_["S_B_11"],
-                callback_data="about_page"
-            ),
-            InlineKeyboardButton(
                 text=_["L_N_G"],
                 callback_data="LG"
+            ),
+            InlineKeyboardButton(
+                text=_["E_X_1"],
+                callback_data="show_video_panel"
             )
         ],
         [
             InlineKeyboardButton(
-                text=_["E_X_1"],
-                callback_data="show_video_panel"
+                text=_["S_B_6"],
+                url=config.SUPPORT_CHANNEL
             ),
-            InlineKeyboardButton(text=_["S_B_5"], user_id=config.OWNER_ID),
+            InlineKeyboardButton(text=_["S_B_9"], url=config.SUPPORT_CHANNEL
         ],
         [
             InlineKeyboardButton(text=_["S_B_4"], callback_data="help_page_1")
@@ -75,4 +75,3 @@ def owner_panel(_):
         ]
     ]
     return buttons
-
