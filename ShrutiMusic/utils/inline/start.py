@@ -8,11 +8,11 @@ def start_panel(_):
             InlineKeyboardButton(
                 text=_["S_B_1"], url=f"https://t.me/{app.username}?startgroup=true"
             ),
-            InlineKeyboardButton(text=_["S_B_10"], callback_data="ping_status"),
+            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHANNEL),
         ],
         [
-            InlineKeyboardButton(text=_["E_X_1"], callback_data="show_video_panel"),
-            InlineKeyboardButton(text=_["S_B_11"], callback_data="about_page")  # About button
+            InlineKeyboardButton(text=_["L_N_G"], callback_data="LG"),
+            InlineKeyboardButton(text=_["E_X_1"], callback_data="show_video_panel")  # About button
         ],
     ]
     return buttons
