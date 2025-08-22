@@ -39,10 +39,10 @@ GIT_TOKEN = os.getenv("GIT_TOKEN", None)
 
 SUPPORT_CHANNEL = os.getenv("SUPPORT_CHANNEL", "https://t.me/AnanyaBots")
 SUPPORT_GROUP = os.getenv("SUPPORT_GROUP", "https://t.me/AnanyaBotSupport")
-INSTAGRAM = os.getenv("INSTAGRAM", "https://instagram.com/yaduwanshi_nand")
-YOUTUBE = os.getenv("YOUTUBE", "https://youtube.com/@NandEditz")
-GITHUB = os.getenv("GITHUB", "https://github.com/NoxxOP")
-DONATE = os.getenv("DONATE", "https://t.me/ShrutiBots/91")
+INSTAGRAM = os.getenv("INSTAGRAM", "https://instagram.com/akash_daksh1c")
+YOUTUBE = os.getenv("YOUTUBE", "https://youtube.com/@akash_editz")
+GITHUB = os.getenv("GITHUB", "https://github.com/akashprajapati9548")
+DONATE = os.getenv("DONATE", "https://t.me/AnanyaBots/128")
 PRIVACY_LINK = os.getenv("PRIVACY_LINK", "https://graph.org/Privacy-Policy-05-01-30")
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
