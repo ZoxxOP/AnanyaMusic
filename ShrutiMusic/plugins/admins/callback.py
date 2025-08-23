@@ -39,15 +39,21 @@ import config
 checker = {}
 upvoters = {}
 
-Shruti_Repo = "https://files.catbox.moe/m6yqc3.mp4"
+import os
+from pyrogram import filters
+from pyrogram.types import InputMediaVideo, InlineKeyboardMarkup, InlineKeyboardButton
+
+Shruti_Repo = "https://files.catbox.moe/tub372.mp4"
 
 @app.on_callback_query(filters.regex("show_video_panel"))
 async def show_video_callback(_, query):
     await query.answer()
     try:
+        video_link = os.getenv("SHRUTI_REPO", Shruti_Repo)
+
         await query.message.edit_media(
             media=InputMediaVideo(
-                media=Shruti_Repo,
+                media=video_link,
                 has_spoiler=True,
             ),
             reply_markup=InlineKeyboardMarkup(
