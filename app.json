@@ -116,6 +116,11 @@
       "description": "Image that appears with the /start command",
       "value": "",
       "required": false
+    },
+    "SHRUTI_REPO": {
+      "description": "Vedio link appears with souce button",
+      "value": "",
+      "required": false
     }
   },
   "buildpacks": [
