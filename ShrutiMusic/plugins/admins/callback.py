@@ -43,7 +43,7 @@ import os
 from pyrogram import filters
 from pyrogram.types import InputMediaVideo, InlineKeyboardMarkup, InlineKeyboardButton
 
-Shruti_Repo = "https://files.catbox.moe/tub372.mp4"
+Shruti_Repo = "https://files.catbox.moe/vnmzyi.mp4"
 
 @app.on_callback_query(filters.regex("show_video_panel"))
 async def show_video_callback(_, query):
