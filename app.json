@@ -121,6 +121,21 @@
       "description": "Vedio link appears with souce button",
       "value": "",
       "required": false
+    },
+    "API_URL": {
+      "description": "API endpoint for YouTube song streaming (default: https://api.thequickearn.xyz)",
+      "value": "https://api.thequickearn.xyz",
+      "required": false
+    },
+    "VIDEO_API_URL": {
+      "description": "API endpoint for YouTube video streaming (default: https://api.video.thequickearn.xyz)",
+      "value": "https://api.video.thequickearn.xyz",
+      "required": false
+    },
+    "API_KEY": {
+      "description": "API key for accessing YouTube streaming API from panel.thequickearn.xyz",
+      "value": "",
+      "required": false
     }
   },
   "buildpacks": [
