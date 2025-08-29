@@ -105,7 +105,7 @@ async def start_pm(client, message: Message, _):
             reply_markup=InlineKeyboardMarkup(out),
         )
        # 👇 Reaction code added here
-    emojis = ["🔥", "❤️", "😂", "👍", "🎶", "😍", "🥰", "🥳", "🌸", "✨"]
+    emojis = ["👍", "❤️", "💯", "😁", "🤝", "🤔", "😢"]
     await app.send_reaction(message.chat.id, message.id, random.choice(emojis))
 
     if await is_on_off(2):
