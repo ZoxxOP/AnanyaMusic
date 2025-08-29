@@ -359,5 +359,7 @@ HELP_39 = """ 🌀<b>ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴛʜᴇsᴇ ʙᴏᴛs 🤖
 
 • @Ananya_VcMusic_Bot – Aɴᴀɴʏᴀ Mᴜsɪᴄ Bᴏᴛ  
 • @ShrutixMusicBot – Sʜʀᴜᴛɪ Mᴜsɪᴄ Bᴏᴛ  
+• @KomalMusicRobot – Kᴏᴍᴀʟ Mᴜsɪᴄ Bᴏᴛ  
+
 
 ✨ ᴜsᴇ ᴛʜᴇsᴇ ʙᴏᴛs ᴛᴏ ᴇɴᴊᴏʏ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ ғᴜʟʟʏ. """
