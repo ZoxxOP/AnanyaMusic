@@ -25,7 +25,6 @@ from ShrutiMusic.utils.inline import help_pannel_page1, private_panel, start_pan
 from config import BANNED_USERS
 from strings import get_string
 
-# Random stickers list
 RANDOM_STICKERS = [
     "CAACAgUAAxkBAAEPRP5osQKN_rM9hAVStYX8q8Mkp2OV-wACOAwAApysAVWFIQpzDWqmAzYE",
     "CAACAgUAAxkBAAEPRPxosQJ5POf59aUCDQG-iIqTqWjadQACSRoAAvCQqVbBl027lbG9FjYE",
@@ -37,11 +36,9 @@ RANDOM_STICKERS = [
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
-    # Send random sticker
     random_sticker = random.choice(RANDOM_STICKERS)
     await message.reply_sticker(sticker=random_sticker)
 
-    # ✅ Emoji react on user message
     try:
         await message.react("🥰🎶")
     except Exception as e:
@@ -121,11 +118,9 @@ async def start_pm(client, message: Message, _):
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def start_gp(client, message: Message, _):
-    # Send random sticker
     random_sticker = random.choice(RANDOM_STICKERS)
     await message.reply_sticker(sticker=random_sticker)
 
-    # ✅ Emoji react in group
     try:
         await message.react("💖🎵")
     except Exception as e:
@@ -167,11 +162,9 @@ async def welcome(client, message: Message):
                     )
                     return await app.leave_chat(message.chat.id)
 
-                # Send random sticker when bot joins group
                 random_sticker = random.choice(RANDOM_STICKERS)
                 await message.reply_sticker(sticker=random_sticker)
 
-                # ✅ Emoji react on welcome
                 try:
                     await message.react("✨🤝")
                 except Exception as e:
