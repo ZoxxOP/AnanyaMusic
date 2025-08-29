@@ -29,8 +29,13 @@ from strings import get_string
 
 RANDOM_STICKERS = [ "CAACAgUAAxkBAAEPRP5osQKN_rM9hAVStYX8q8Mkp2OV-wACOAwAApysAVWFIQpzDWqmAzYE", "CAACAgUAAxkBAAEPRPxosQJ5POf59aUCDQG-iIqTqWjadQACSRoAAvCQqVbBl027lbG9FjYE", "CAACAgUAAxkBAAEPRPposQJiivGbMvpM41fEVT8cJLackQACogwAAmHl2FdX4bYIytvjVjYE", "CAACAgUAAxkBAAEPRQlosQtMJ27AQs7wr8qgkJHfi3-KvQACfhIAAja5qFZqLXH6Ew_3jjYE" ]
 
-@app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS) @LanguageStart async def start_pm(client, message: Message, _): # Send random sticker first random_sticker = random.choice(RANDOM_STICKERS) await message.reply_sticker(sticker=random_sticker)
-
+@app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
+@LanguageStart
+async def start_pm(client, message: Message, _):
+    # Send random sticker first
+    random_sticker = random.choice(RANDOM_STICKERS)
+    await message.reply_sticker(sticker=random_sticker)
+    
 await add_served_user(message.from_user.id)
 if len(message.text.split()) > 1:
     name = message.text.split(None, 1)[1]
