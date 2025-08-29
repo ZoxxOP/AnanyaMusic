@@ -37,15 +37,21 @@ RANDOM_STICKERS = [
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
-    # Send random sticker first
+    # Send random sticker
     random_sticker = random.choice(RANDOM_STICKERS)
     await message.reply_sticker(sticker=random_sticker)
-    
+
+    # ✅ Emoji react on user message
+    try:
+        await message.react("🥰🎶")
+    except Exception as e:
+        print(f"Reaction failed: {e}")
+
     await add_served_user(message.from_user.id)
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
-            keyboard = help_pannel(_)
+            keyboard = help_pannel_page1(_)
             return await message.reply_photo(
                 photo=config.START_IMG_URL,
                 caption=_["help_1"].format(config.SUPPORT_GROUP),
@@ -115,10 +121,16 @@ async def start_pm(client, message: Message, _):
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def start_gp(client, message: Message, _):
-    # Send random sticker first
+    # Send random sticker
     random_sticker = random.choice(RANDOM_STICKERS)
     await message.reply_sticker(sticker=random_sticker)
-    
+
+    # ✅ Emoji react in group
+    try:
+        await message.react("💖🎵")
+    except Exception as e:
+        print(f"Reaction failed: {e}")
+
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
     await message.reply_photo(
@@ -155,9 +167,15 @@ async def welcome(client, message: Message):
                     )
                     return await app.leave_chat(message.chat.id)
 
-                # Send random sticker first when bot joins group
+                # Send random sticker when bot joins group
                 random_sticker = random.choice(RANDOM_STICKERS)
                 await message.reply_sticker(sticker=random_sticker)
+
+                # ✅ Emoji react on welcome
+                try:
+                    await message.react("✨🤝")
+                except Exception as e:
+                    print(f"Reaction failed: {e}")
 
                 out = start_panel(_)
                 await message.reply_photo(
@@ -174,5 +192,3 @@ async def welcome(client, message: Message):
                 await message.stop_propagation()
         except Exception as ex:
             print(ex)
-
-
