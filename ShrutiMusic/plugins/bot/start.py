@@ -111,7 +111,13 @@ else:
             text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ.\n\n<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
         )
 
-@app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS) @LanguageStart async def start_gp(client, message: Message, _): # Send random sticker first random_sticker = random.choice(RANDOM_STICKERS) await message.reply_sticker(sticker=random_sticker)
+@app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
+@LanguageStart
+async def start_gp(client, message: Message, _):
+    # Send random sticker first
+    random_sticker = random.choice(RANDOM_STICKERS)
+    await message.reply_sticker(sticker=random_sticker)
+    
 
 out = start_panel(_)
 uptime = int(time.time() - _boot_)
