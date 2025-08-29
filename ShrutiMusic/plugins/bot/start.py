@@ -25,7 +25,7 @@ from ShrutiMusic.utils.inline import help_pannel_page1, private_panel, start_pan
 from config import BANNED_USERS
 from strings import get_string
 
-Random stickers list
+#Random stickers list
 
 RANDOM_STICKERS = [ "CAACAgUAAxkBAAEPRP5osQKN_rM9hAVStYX8q8Mkp2OV-wACOAwAApysAVWFIQpzDWqmAzYE", "CAACAgUAAxkBAAEPRPxosQJ5POf59aUCDQG-iIqTqWjadQACSRoAAvCQqVbBl027lbG9FjYE", "CAACAgUAAxkBAAEPRPposQJiivGbMvpM41fEVT8cJLackQACogwAAmHl2FdX4bYIytvjVjYE", "CAACAgUAAxkBAAEPRQlosQtMJ27AQs7wr8qgkJHfi3-KvQACfhIAAja5qFZqLXH6Ew_3jjYE" ]
 
