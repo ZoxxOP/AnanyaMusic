@@ -104,6 +104,16 @@ async def start_pm(client, message: Message, _):
             caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM),
             reply_markup=InlineKeyboardMarkup(out),
         )
+       # 👇 Reaction code added here
+    emojis = ["🥰", "🔥", "💖", "😁", "😎", "🤖", "✨"]
+    await app.send_reaction(message.chat.id, message.id, random.choice(emojis))
+
+    if await is_on_off(2):
+        return await app.send_message(
+            chat_id=config.LOG_GROUP_ID,
+            text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ.\n\n<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
+        )
+        
         if await is_on_off(2):
             return await app.send_message(
                 chat_id=config.LOG_GROUP_ID,
