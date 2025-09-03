@@ -27,9 +27,7 @@ def private_panel(_):
         ],
         [
             InlineKeyboardButton(
-                text=_["L_N_G"],
-                callback_data="LG"
-            ),
+                text=_["S_B_5"], user_id=config.OWNER_ID),
             InlineKeyboardButton(
                 text=_["E_X_1"],
                 callback_data="show_video_panel"
@@ -44,9 +42,6 @@ def private_panel(_):
                 text=_["S_B_2"],
                 url=config.SUPPORT_GROUP
             ),
-        ],
-        [
-            InlineKeyboardButton(text=_["S_B_5"], user_id=config.OWNER_ID),
         ],
         [
             InlineKeyboardButton(text=_["S_B_4"], callback_data="help_page_1")
