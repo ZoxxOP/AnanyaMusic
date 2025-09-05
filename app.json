@@ -29,7 +29,7 @@
     },
     "MONGO_DB_URI": {
       "description": "Get a mongodb url from https://cloud.mongodb.com.",
-      "value": "mongodb+srv://Akash:SanataniAkash@sanataniakash.co9sxq5.mongodb.net/?retryWrites=true&w=majority&appName=SanataniAkash",
+      "value": "mongodb+srv://Akash:Akash@akash.cbqfo1w.mongodb.net/?retryWrites=true&w=majority&appName=Akash",
       "required": true
     },
     "OWNER_ID": {
@@ -49,7 +49,7 @@
     },
     "UPSTREAM_REPO": {
       "description": "URL of your GitHub repository",
-      "value": "https://github.com/akashprajapati9548/ShrutiMusic",
+      "value": "https://github.com/akashprajapati9548/AnanyaMusic",
       "required": false
     },
     "STRING_SESSION": {
@@ -121,22 +121,6 @@
       "description": "Vedio link appears with souce button",
       "value": "",
       "required": false
-    },
-    "API_URL": {
-      "description": "API endpoint for YouTube song streaming (default: https://api.thequickearn.xyz)",
-      "value": "https://api.thequickearn.xyz",
-      "required": false
-    },
-    "VIDEO_API_URL": {
-      "description": "API endpoint for YouTube video streaming (default: https://api.video.thequickearn.xyz)",
-      "value": "https://api.video.thequickearn.xyz",
-      "required": false
-    },
-    "API_KEY": {
-      "description": "API key for accessing YouTube streaming API from panel.thequickearn.xyz",
-      "value": "",
-      "required": false
-    }
   },
   "buildpacks": [
     {
