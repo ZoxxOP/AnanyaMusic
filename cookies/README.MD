@@ -18,7 +18,7 @@ This folder is dedicated to storing your YouTube cookies file(s) for the Telegra
 6️⃣ Paste the cookies into a `.txt` file inside this `cookies` folder.
 
 ❓ 𝐇𝐞𝐥𝐩:
-If you face any difficulties or don’t know how to extract cookies, feel free to DM @WTF_WhyMeeh on Telegram for assistance.
+If you face any difficulties or don’t know how to extract cookies, feel free to DM @WTF_NoHope on Telegram for assistance.
 
 ✨ 𝐍𝐨𝐭𝐞:
 - Your YouTube cookies are essential for the bot to stream music properly.
@@ -30,7 +30,7 @@ If you face any difficulties or don’t know how to extract cookies, feel free t
                   🔐 𝐂𝐫𝐞𝐝𝐢𝐭𝐬 & 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 🔐
 
 Developed and Maintained by:
-- Telegram: @WTF_WhyMeeh
-- Telegram: @ShrutiBots
+- Telegram: @WTF_NoHope
+- Telegram: @AnanyaBots
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
