@@ -3303,13 +3303,13 @@ async def send_repo(_, message: Message):
         caption=(
             "<b>✨ ʜᴇʏ ᴅᴇᴀʀ, ʜᴇʀᴇ ɪꜱ ᴛʜᴇ ᴏꜰꜰɪᴄɪᴀʟ ʀᴇᴘᴏꜱɪᴛᴏʀʏ �ᴏꜰ ᴛʜɪꜱ ʙᴏᴛ ✨</b>\n\n"
             "🔗 �ᴏɴ'ᴛ ꜰᴏʀɢᴇᴛ ᴛᴏ ɢɪᴠᴇ ᴀ ꜱᴛᴀʀ 🌟 ᴀɴᴅ ꜰᴏʟʟᴏᴡ!\n\n"
-            "🧡 ᴄʀᴇᴅɪᴛꜱ : <a href='https://t.me/ShrutiBots'>@ShrutiBots</a>"
+            "🧡 ᴄʀᴇᴅɪᴛꜱ : <a href='https://t.me/AnanyaBots'>@AnanyaBots</a>"
         ),
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📂 Management Bot", url="http://github.com/NoxxOP/ShrutiMusic"),
-                    InlineKeyboardButton("📂 Music Bot", url="http://github.com/NoxxOP/ShrutixMusic")
+                    InlineKeyboardButton("📂 Management Bot", url="http://github.com/akashprajapati9548/AnanyaMusic"),
+                    InlineKeyboardButton("📂 Music Bot", url="http://github.com/akashprajapati9548/AnanyaxMusic")
                 ]
             ]
         ),
@@ -3642,13 +3642,3 @@ async def send_repo(_, message: Message):
 
 
 
-# ©️ Copyright Reserved - @NoxxOP  Nand Yaduwanshi
-
-# ===========================================
-# ©️ 2025 Nand Yaduwanshi (aka @NoxxOP)
-# 🔗 GitHub : https://github.com/NoxxOP/ShrutiMusic
-# 📢 Telegram Channel : https://t.me/ShrutiBots
-# ===========================================
-
-
-# ❤️ Love From ShrutiBots 
