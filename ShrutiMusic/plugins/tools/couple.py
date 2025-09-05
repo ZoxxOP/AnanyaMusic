@@ -191,5 +191,3 @@ Nᴇxᴛ ᴄᴏᴜᴘʟᴇs ᴡɪʟʟ ʙᴇ sᴇʟᴇᴄᴛᴇᴅ ᴏɴ {tomorro
         except Exception as cleanup_error:
             print(f"Error during cleanup: {cleanup_error}")
 
-
-# ❤️ Love From ShrutiBots 
