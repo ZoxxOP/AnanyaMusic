@@ -227,7 +227,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For any questions or help, join our [Support Group](https://t.me/AnanyaBotSupport)
 
 <p align="center">
-<img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20by-NoxxOP-red?style=for-the-badge" alt="Made with love">
+<img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20by-AkashOP-red?style=for-the-badge" alt="Made with love">
 </p>
 
 ---
