@@ -12,7 +12,7 @@ def start_panel(_):
         ],
         [
             InlineKeyboardButton(text=_["L_N_G"], callback_data="LG"),
-            InlineKeyboardButton(text=_["E_X_1"], callback_data="show_video_panel")  # About button
+            InlineKeyboardButton(text=_["E_X_1"], callback_data="panel")  # About button
         ],
     ]
     return buttons
