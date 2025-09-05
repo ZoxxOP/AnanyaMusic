@@ -45,7 +45,7 @@ from pyrogram.types import InputMediaVideo, InlineKeyboardMarkup, InlineKeyboard
 
 Shruti_Repo = "https://files.catbox.moe/vnmzyi.mp4"
 
-@app.on_callback_query(filters.regex("show_video_panel"))
+@app.on_callback_query(filters.regex("panel"))
 async def show_video_callback(_, query):
     await query.answer()
     try:
