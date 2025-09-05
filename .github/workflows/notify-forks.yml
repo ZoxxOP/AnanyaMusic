@@ -14,7 +14,7 @@ jobs:
           echo "Checking forked repos for update notification..."
 
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/NoxxOP/ShrutiMusic/forks \
+            https://api.github.com/repos/akashprajapati9548/AnanyaMusic/forks \
             | jq -r '.[].full_name' \
             | while read repo; do
               echo "Creating issue in fork: $repo"
@@ -22,5 +22,5 @@ jobs:
                 -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" \
                 -H "Accept: application/vnd.github.v3+json" \
                 https://api.github.com/repos/$repo/issues \
-                -d "{\"title\": \"🔄 New Update Available\", \"body\": \"Your fork of [ShrutiMusic](https://github.com/NoxxOP/ShrutiMusic) is behind. Please merge the latest changes from the upstream repo.\n\nThanks! 🙌\"}"
+                -d "{\"title\": \"🔄 New Update Available\", \"body\": \"Your fork of [ShrutiMusic](https://github.com/akashprajapati9548/AnanyaMusic) is behind. Please merge the latest changes from the upstream repo.\n\nThanks! 🙌\"}"
             done
