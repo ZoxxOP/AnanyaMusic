@@ -91,7 +91,7 @@ COMMANDS = [
     BotCommand("downloadrepo", "📥 Download GitHub repository"),
     BotCommand("truth", "🤔 Get random truth question"),
     BotCommand("gifts", "💘 Show All available Gifts"),
-    BotCommand("sendgifts", "💫 send a gift to user"),
+    BotCommand("sendgift", "💫 send a gift to user"),
     BotCommand("mygifts", "🫧 view your recieved gifts"),
     BotCommand("balance", "🚨 check your coins"),
     BotCommand("bal", "⚓ Check your balance"),
