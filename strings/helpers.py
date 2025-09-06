@@ -364,7 +364,7 @@ HELP_39 = """ 🌀<b>ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴛʜᴇsᴇ ʙᴏᴛs 🤖
 
 ✨ ᴜsᴇ ᴛʜᴇsᴇ ʙᴏᴛs ᴛᴏ ᴇɴᴊᴏʏ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ ғᴜʟʟʏ. """
 
-HELP_38 = """💝 <b>LOVE BIRDS TOOLS</b> 🕊️
+HELP_40 = """💝 <b>LOVE BIRDS TOOLS</b> 🕊️
 
 🎁 <b>Virtual Gifts:</b>  
 • /gifts - <b>ꜱʜᴏᴡ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ɢɪꜰᴛꜱ</b> 🎀  
