@@ -335,14 +335,14 @@ async def leaderboard(_, message):
     except Exception as e:
         await message.reply_text(f"⚠️ <b>Error:</b> {str(e)}")
 
-@app.on_message(filters.text & ~filters.command(["balance", "bal", "gifts", "sendgift", "story", "mygifts", "received", "top", "leaderboard"], prefixes=["/", "!", "."]))
+@app.on_message(filters.text & ~filters.regex(r"^[/!.\-]"))
 async def give_coins_and_claim_gifts(_, message):
     uid, username = get_user_info(message)
-    
+
     await get_user_data(uid)
-    
+
     gift_count, bonus_coins = await claim_pending_gifts(uid, username)
-    
+
     if gift_count > 0:
         claim_msg = f"""
 🎁 <b>Gifts Claimed!</b>
@@ -353,7 +353,7 @@ async def give_coins_and_claim_gifts(_, message):
 Use /mygifts to see your received gifts! 💝
         """
         await message.reply_text(claim_msg)
-    
-    # Give coins randomly to avoid spam (20% chance)
+
+    # Random 20% chance for coin reward
     if random.randint(1, 100) <= 20:
-        await update_user_coins(uid, 1)  # 1 coin per message
+        await update_user_coins(uid, 1)
