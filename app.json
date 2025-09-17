@@ -49,7 +49,7 @@
     },
     "UPSTREAM_REPO": {
       "description": "URL of your GitHub repository",
-      "value": "https://github.com/akashprajapati9548/AnanyaMusic",
+      "value": "https://github.com/ZOXXOP/AnanyaMusic",
       "required": false
     },
     "STRING_SESSION": {
@@ -99,7 +99,7 @@
     },
     "GITHUB": {
       "description": "Your GitHub profile link",
-      "value": "https://github.com/akashprajapati9548",
+      "value": "https://github.com/ZOXXOP",
       "required": false
     },
     "DONATE": {
