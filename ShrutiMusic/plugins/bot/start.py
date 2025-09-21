@@ -101,7 +101,7 @@ async def start_pm(client, message: Message, _):
         out = private_panel(_)
         UP, CPU, RAM, DISK = await bot_sys_stats()
         await message.reply_photo(
-            photo=config.START_IMG_URL,
+            photo=config.START_VID_URL,
             caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM),
             reply_markup=InlineKeyboardMarkup(out),
         )
@@ -171,7 +171,7 @@ async def welcome(client, message: Message):
 
                 out = start_panel(_)
                 await message.reply_photo(
-                    photo=config.START_IMG_URL,
+                    photo=config.START_VID_URL,
                     caption=_["start_3"].format(
                         message.from_user.first_name,
                         app.mention,
