@@ -90,7 +90,7 @@ API_URL = os.getenv("API_URL", "https://api.thequickearn.xyz") #youtube song url
 VIDEO_API_URL = os.getenv("VIDEO_API_URL", "https://api.video.thequickearn.xyz")
 API_KEY = os.getenv("30DxNexGenBots4d6508", None) # youtube song api key, generate free key or buy paid plan from panel.thequickearn.xyz
 
-START_VID_URL = os.getenv("START_VID_URL", "https://files.catbox.moe/1tnq00.mp4")
+START_IMH_URL = os.getenv("START_IMG_URL", "https://files.catbox.moe/t68588.jpg")
 PING_IMG_URL = os.getenv("PING_IMG_URL", "https://files.catbox.moe/hee6pf.jpg")
 PLAYLIST_IMG_URL = "https://files.catbox.moe/hee6pf.jpg"
 STATS_IMG_URL = "https://files.catbox.moe/hee6pf.jpg"
