@@ -112,7 +112,7 @@
       "value": "Need , IF You Didn't add Cookies file in cookies folder",
       "required": false
     },
-    "START_VID_URL": {
+    "START_IMG_URL": {
       "description": "Image that appears with the /start command",
       "value": "",
       "required": false
