@@ -46,7 +46,7 @@ async def start_pm(client, message: Message, _):
         if name[0:4] == "help":
             keyboard = help_pannel(_)
             return await message.reply_photo(
-                photo=config.START_IMG_URL,
+                photo=config.START_VIDEO_URL,
                 caption=_["help_1"].format(config.SUPPORT_GROUP),
                 protect_content=True,
                 reply_markup=keyboard,
@@ -85,10 +85,10 @@ async def start_pm(client, message: Message, _):
                 ]
             )
             await m.delete()
-            await app.send_photo(
+            await app.send_video(
                 chat_id=message.chat.id,
-                photo=thumbnail,
-                has_spoiler=True,
+                video=thumbnail,
+                has_spoiler=False,
                 caption=searched_text,
                 reply_markup=key,
             )
@@ -131,8 +131,8 @@ async def start_gp(client, message: Message, _):
     
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
-    await message.reply_photo(
-        photo=config.START_IMG_URL,
+    await message.reply_video(
+        photo=config.START_VIDEO_URL,
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
@@ -170,8 +170,8 @@ async def welcome(client, message: Message):
                 await message.reply_sticker(sticker=random_sticker)
 
                 out = start_panel(_)
-                await message.reply_photo(
-                    photo=config.START_IMG_URL,
+                await message.reply_video(
+                    photo=config.START_VIDEO_URL,
                     caption=_["start_3"].format(
                         message.from_user.first_name,
                         app.mention,
