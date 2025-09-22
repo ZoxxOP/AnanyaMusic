@@ -26,8 +26,6 @@ from config import BANNED_USERS
 from strings import get_string
 
 
-START_VIDEO_URL = "https://files.catbox.moe/1tnq00.mp4"
-
 RANDOM_STICKERS = [
     "CAACAgUAAxkBAAEPRP5osQKN_rM9hAVStYX8q8Mkp2OV-wACOAwAApysAVWFIQpzDWqmAzYE",
     "CAACAgUAAxkBAAEPRPxosQJ5POf59aUCDQG-iIqTqWjadQACSRoAAvCQqVbBl027lbG9FjYE",
@@ -49,7 +47,7 @@ async def start_pm(client, message: Message, _):
         if name[0:4] == "help":
             keyboard = help_pannel(_)
             return await message.reply_video(
-                video=START_VIDEO_URL,
+                video=config.START_VIDEO_URL,
                 caption=_["help_1"].format(config.SUPPORT_GROUP),
                 protect_content=True,
                 reply_markup=keyboard,
@@ -114,7 +112,7 @@ async def start_pm(client, message: Message, _):
         out = private_panel(_)
         UP, CPU, RAM, DISK = await bot_sys_stats()
         await message.reply_video(
-            video=START_VIDEO_URL,
+            video=config.START_VIDEO_URL,
             caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM),
             reply_markup=InlineKeyboardMarkup(out),
         )
