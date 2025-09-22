@@ -136,14 +136,14 @@ async def start_pm(client, message: Message, _):
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def start_gp(client, message: Message, _):
-    # Send random sticker first
+    
     random_sticker = random.choice(RANDOM_STICKERS)
     await message.reply_sticker(sticker=random_sticker)
     
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
-    await message.reply_video(
-        photo=config.START_VIDEO_URL,
+    await message.reply_photo(
+        photo=config.START_IMG_URL,  
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
@@ -176,13 +176,13 @@ async def welcome(client, message: Message):
                     )
                     return await app.leave_chat(message.chat.id)
 
-                # Send random sticker first when bot joins group
+                
                 random_sticker = random.choice(RANDOM_STICKERS)
                 await message.reply_sticker(sticker=random_sticker)
 
                 out = start_panel(_)
-                await message.reply_video(
-                    photo=config.START_VIDEO_URL,
+                await message.reply_photo(
+                    photo=config.START_IMG_URL,  
                     caption=_["start_3"].format(
                         message.from_user.first_name,
                         app.mention,
@@ -195,5 +195,4 @@ async def welcome(client, message: Message):
                 await message.stop_propagation()
         except Exception as ex:
             print(ex)
-
 
