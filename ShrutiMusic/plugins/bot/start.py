@@ -27,10 +27,10 @@ from strings import get_string
 
 
 RANDOM_STICKERS = [
-    "CAACAgUAAxkBAAEPRP5osQKN_rM9hAVStYX8q8Mkp2OV-wACOAwAApysAVWFIQpzDWqmAzYE",
-    "CAACAgUAAxkBAAEPRPxosQJ5POf59aUCDQG-iIqTqWjadQACSRoAAvCQqVbBl027lbG9FjYE",
-    "CAACAgUAAxkBAAEPRPposQJiivGbMvpM41fEVT8cJLackQACogwAAmHl2FdX4bYIytvjVjYE",
-    "CAACAgUAAxkBAAEPRQlosQtMJ27AQs7wr8qgkJHfi3-KvQACfhIAAja5qFZqLXH6Ew_3jjYE"
+    "CAACAgUAAxkBAAEPbk1o0snAMAABD1dJ-MZEm_X_okD-nFYAAh8QAAK0zShUaoZsm96EvzQ2BA",
+    "CAACAgUAAxkBAAEPbk9o0snDq5hEaP0m8bvUWpDo1vFgLQAC7RAAA8cpVMNMmZ22yquQNgQ",
+    "CAACAgUAAxkBAAEPblNo0snHbOideaM_rgM8PXze_lO_FwACyREAAiMcKVSEbd50BZVsUzYE",
+    "CAACAgUAAxkBAAEPblVo0snJAYHKLSJvR-ueI3r2hbbgxgACThYAAlHgKFQAARW8aAfbrqc2BA"
 ]
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
