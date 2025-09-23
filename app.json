@@ -126,7 +126,8 @@
       "description": "Vedio link appears with souce button",
       "value": "",
       "required": false
-  }
+    }
+  },
   "buildpacks": [
     {
       "url": "heroku/python"
