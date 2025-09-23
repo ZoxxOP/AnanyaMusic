@@ -91,39 +91,12 @@ def help_pannel_page3(_, START: Union[bool, int] = None):
                 InlineKeyboardButton(text=_["H_B_33"], callback_data="help_callback hb33"),
             ],
             [
-                InlineKeyboardButton(text=_["H_B_28"], callback_data="help_callback hb28"),
-                InlineKeyboardButton(text=_["H_B_29"], callback_data="help_callback hb29"),
-            ],
-            [
-                InlineKeyboardButton(text=_["H_B_30"], callback_data="help_callback hb30"),
-                InlineKeyboardButton(text=_["H_B_31"], callback_data="help_callback hb31"),
-            ],
-            [
-                InlineKeyboardButton(
-                    text=_["BACK_BUTTON"] if START else _["CLOSE_BUTTON"],
-                    callback_data="settingsback_helper" if START else "close",
-                ),
-                InlineKeyboardButton(text="⌯ Nᴇxᴛ ⌯", callback_data="help_page_4"),
-            ],
-        ]
-    )
-    
-def help_pannel_page4(_, START: Union[bool, int] = None):
-    return InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(text=_["H_B_32"], callback_data="help_callback hb32"),
-                InlineKeyboardButton(text=_["H_B_33"], callback_data="help_callback hb33")
-            ],
-            [
                 InlineKeyboardButton(text=_["H_B_34"], callback_data="help_callback hb34"),
                 InlineKeyboardButton(text=_["H_B_35"], callback_data="help_callback hb35"),
-            ],
-            [
                 InlineKeyboardButton(text=_["H_B_36"], callback_data="help_callback hb36"),
-                InlineKeyboardButton(text=_["H_B_37"], callback_data="help_callback hb37"),
             ],
             [
+                InlineKeyboardButton(text=_["H_B_37"], callback_data="help_callback hb37"),
                 InlineKeyboardButton(text=_["H_B_38"], callback_data="help_callback hb38"),
                 InlineKeyboardButton(text=_["H_B_39"], callback_data="help_callback hb39"),
             ],
@@ -135,7 +108,7 @@ def help_pannel_page4(_, START: Union[bool, int] = None):
                     text=_["BACK_BUTTON"] if START else _["CLOSE_BUTTON"],
                     callback_data="settingsback_helper" if START else "close",
                 ),
-                InlineKeyboardButton(text="⌯ Nᴇxᴛ ⌯", callback_data="help_page_1"),
+                InlineKeyboardButton(text="⌯ Nᴇxᴛ ⌯", callback_data="help_page_4"),
             ],
         ]
     )
