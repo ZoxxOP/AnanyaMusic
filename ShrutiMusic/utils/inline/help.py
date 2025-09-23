@@ -107,11 +107,7 @@ def help_pannel_page3(_, START: Union[bool, int] = None):
                 InlineKeyboardButton(
                     text=_["BACK_BUTTON"] if START else _["CLOSE_BUTTON"],
                     callback_data="settingsback_helper" if START else "close",
-                ),
-                InlineKeyboardButton(text="⌯ Nᴇxᴛ ⌯", callback_data="help_page_4"),
-            ],
-        ]
-    )
+                )
 
 def help_back_markup(_, page: int = 1):
     return InlineKeyboardMarkup(
