@@ -20,7 +20,7 @@ from ShrutiMusic.utils.database import (
 from ShrutiMusic.utils.decorators.language import languageCB
 from ShrutiMusic.utils.formatters import seconds_to_min
 from ShrutiMusic.utils.inline import close_markup, stream_markup, stream_markup_timer
-from ShrutiMusic.utils.inline.help import help_pannel_page1, help_pannel_page2, help_pannel_page3, help_pannel_page4
+from ShrutiMusic.utils.inline.help import help_pannel_page1, help_pannel_page2, help_pannel_page3
 from ShrutiMusic.utils.stream.autoclear import auto_clean
 from ShrutiMusic.utils.thumbnails import gen_thumb
 from config import (
