@@ -34,7 +34,7 @@
     },
     "OWNER_ID": {
       "description": "The user id of user whom you would like to add as OWNER.",
-      "value": "7853121219",
+      "value": "",
       "required": true
     },
     "OWNER_USERNAME": {
@@ -49,7 +49,7 @@
     },
     "UPSTREAM_REPO": {
       "description": "URL of your GitHub repository",
-      "value": "https://github.com/ZOXXOP/AnanyaMusic",
+      "value": "https://github.com/ZoxxOP/AnanyaMusic",
       "required": false
     },
     "STRING_SESSION": {
