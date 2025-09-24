@@ -2,71 +2,67 @@ import asyncio
 import random
 from pyrogram import filters
 from pyrogram.types import Message
-from pyrogram import enums
 from ShrutiMusic import app
 
-# Global dictionary to track active chats for all tagging types
 active_chats = {}
 
-# Message templates for different times of day
 GM_MESSAGES = [
-    "🌞 Gᴏᴏᴅ Mᴏʀɴɪɴɢ 🌼\n\n{mention}",
-    "☕ Rise and Shine!\n\n{mention}",
-    "🌄 Sᴜʀᴀᴊ Nɪᴋʜʀᴀ, Tᴜᴍʜᴀʀᴀ Dɪɴ Sᴜʙʜ Hᴏ\n\n{mention}",
-    "🌻 Nᴇᴇᴛʜ Kʜᴀᴛᴀᴍ, Aʙ Kᴀᴀᴍ Sʜᴜʀᴜ\n\n{mention}",
-    "💫 Jᴀɢᴏ Mᴇʀᴇ Sʜᴇʀᴏ!\n\n{mention}",
-    "🕊️ Sᴜᴋʜ Sᴀʙʜᴀ Gᴏᴏᴅ Mᴏʀɴɪɴɢ\n\n{mention}",
-    "🌅 Nᴀʏɪ Sᴜʙᴀʜ, Nᴀʏᴇ Sᴀᴘɴᴇ\n\n{mention}",
-    "🌸 Pʜᴜᴀʟᴏɴ Sᴇ Bʜᴀʀᴀ Yᴇʜ Sᴜʙᴀʜ\n\n{mention}",
-    "⭐ Uᴛʜᴏ Mᴇʀᴇ Sɪᴛᴀʀᴏ, Dɪɴ Sᴜʜᴀᴠᴀɴᴀ Hᴏ\n\n{mention}",
-    "🌺 Kʜᴜsʜɪʏᴏɴ Sᴇ Bʜᴀʀᴀ Hᴏ Yᴇʜ Dɪɴ\n\n{mention}",
-    "🦋 Tɪᴛʟɪʏᴏɴ Kɪ Tᴀʀᴀʜ Uᴅᴏ Aᴀᴊ\n\n{mention}",
-    "🌈 Rᴀɴɢ Bʜᴀʀᴀ Hᴏ Yᴇʜ Dɪɴ Tᴜᴍʜᴀʀᴀ\n\n{mention}",
-    "🎵 Pᴀᴋsʜɪʏᴏɴ Kᴀ Gᴀᴀɴᴀ Sᴜɴᴋᴇ Uᴛʜᴏ\n\n{mention}",
-    "🌤️ Dʜᴜᴀɴ Kᴀ Gɪʟᴀᴀs Aᴜʀ Tᴜᴍʜᴀʀɪ Hᴀɴsɪ\n\n{mention}",
-    "🌟 Cʜᴀᴀɴᴅ Sɪᴛᴀʀᴇ Bᴏʟᴇ - Gᴏᴏᴅ Mᴏʀɴɪɴɢ\n\n{mention}",
-    "💐 Hᴀʀ Kᴀᴀᴍ Mᴇɪɴ Kᴀᴀᴍʏᴀʙɪ Mɪʟᴇ\n\n{mention}"
+    "🌞 <b>Gᴏᴏᴅ Mᴏʀɴɪɴɢ</b> 🌼\n\n{mention}",
+    "☕ <b>Rise and Shine!</b>\n\n{mention}",
+    "🌄 <b>Sᴜʀᴀᴊ Nɪᴋʜʀᴀ, Tᴜᴍʜᴀʀᴀ Dɪɴ Sᴜʙʜ Hᴏ</b>\n\n{mention}",
+    "🌻 <b>Nᴇᴇᴛʜ Kʜᴀᴛᴀᴍ, Aʙ Kᴀᴀᴍ Sʜᴜʀᴜ</b>\n\n{mention}",
+    "💫 <b>Jᴀɢᴏ Mᴇʀᴇ Sʜᴇʀᴏ!</b>\n\n{mention}",
+    "🕊️ <b>Sᴜᴋʜ Sᴀʙʜᴀ Gᴏᴏᴅ Mᴏʀɴɪɴɢ</b>\n\n{mention}",
+    "🌅 <b>Nᴀʏɪ Sᴜʙᴀʜ, Nᴀʏᴇ Sᴀᴘɴᴇ</b>\n\n{mention}",
+    "🌸 <b>Pʜᴜᴀʟᴏɴ Sᴇ Bʜᴀʀᴀ Yᴇʜ Sᴜʙᴀʜ</b>\n\n{mention}",
+    "⭐ <b>Uᴛʜᴏ Mᴇʀᴇ Sɪᴛᴀʀᴏ, Dɪɴ Sᴜʜᴀᴠᴀɴᴀ Hᴏ</b>\n\n{mention}",
+    "🌺 <b>Kʜᴜsʜɪʏᴏɴ Sᴇ Bʜᴀʀᴀ Hᴏ Yᴇʜ Dɪɴ</b>\n\n{mention}",
+    "🦋 <b>Tɪᴛʟɪʏᴏɴ Kɪ Tᴀʀᴀʜ Uᴅᴏ Aᴀᴊ</b>\n\n{mention}",
+    "🌈 <b>Rᴀɴɢ Bʜᴀʀᴀ Hᴏ Yᴇʜ Dɪɴ Tᴜᴍʜᴀʀᴀ</b>\n\n{mention}",
+    "🎵 <b>Pᴀᴋsʜɪʏᴏɴ Kᴀ Gᴀᴀɴᴀ Sᴜɴᴋᴇ Uᴛʜᴏ</b>\n\n{mention}",
+    "🌤️ <b>Dʜᴜᴀɴ Kᴀ Gɪʟᴀᴀs Aᴜʀ Tᴜᴍʜᴀʀɪ Hᴀɴsɪ</b>\n\n{mention}",
+    "🌟 <b>Cʜᴀᴀɴᴅ Sɪᴛᴀʀᴇ Bᴏʟᴇ - Gᴏᴏᴅ Mᴏʀɴɪɴɢ</b>\n\n{mention}",
+    "💐 <b>Hᴀʀ Kᴀᴀᴍ Mᴇɪɴ Kᴀᴀᴍʏᴀʙɪ Mɪʟᴇ</b>\n\n{mention}"
 ]
 
 GA_MESSAGES = [
-    "🌞 Gᴏᴏᴅ Aғᴛᴇʀɴᴏᴏɴ ☀️\n\n{mention}",
-    "🍵 Cʜᴀɪ Pɪ Lᴏ, Aғᴛᴇʀɴᴏᴏɴ Hᴏ Gᴀʏɪ\n\n{mention}",
-    "🌤️ Hᴀʟᴋɪ Dᴏᴘʜᴀʀ, Aᴜʀ Tᴜᴍʜᴀʀᴀ Nᴀᴀᴍ 💌\n\n{mention}",
-    "😴 Sᴏɴᴀ Mᴀᴛ, Kᴀᴀᴍ Kᴀʀᴏ 😜\n\n{mention}",
-    "📢 Hᴇʏ Gᴏᴏᴅ Aғᴛᴇʀɴᴏᴏɴ!\n\n{mention}",
-    "🌅 Dᴏᴘʜᴀʀ Kᴀ Sᴜʀᴀᴊ Tᴇᴢ Hᴀɪ\n\n{mention}",
-    "🥗 Kʜᴀᴀɴᴀ Kʜᴀʏᴀ Kᴇ Nᴀʜɪ?\n\n{mention}",
-    "☀️ Tᴇᴢ Dʜᴜᴀᴘ Mᴇɪɴ Tʜᴀɴᴅᴀ Pᴀᴀɴɪ Pɪʏᴏ\n\n{mention}",
-    "🌻 Dᴏᴘʜᴀʀ Kᴀ Aʀᴀᴀᴍ Kᴀʀᴏ\n\n{mention}",
-    "🍃 Pᴀᴘᴇᴅ Kᴇ Nᴇᴇᴄʜᴇ Bᴀɪᴛʜᴋᴇ Bᴀᴀᴛᴇɪɴ\n\n{mention}",
-    "🌸 Lᴜɴᴄʜ Kᴀ Tɪᴍᴇ Hᴏ Gᴀʏᴀ\n\n{mention}",
-    "🦋 Dᴏᴘʜᴀʀ Kɪ Mᴀsᴛɪ Kᴀʀᴏ\n\n{mention}",
-    "🍉 Tᴀʀʙᴜᴊ Kʜᴀᴀᴋᴇ Tʜᴀɴᴅᴀ Hᴏ Jᴀᴏ\n\n{mention}",
-    "🌺 Aᴀsᴍᴀɴ Bʜɪ Sᴀᴀғ Hᴀɪ Aᴀᴊ\n\n{mention}",
-    "🎵 Gᴜɴɢᴜɴᴀᴛᴇ Hᴜᴇ Kᴀᴀᴍ Kᴀʀᴏ\n\n{mention}",
-    "🌈 Rᴀɴɢ Bɪʀᴀɴɢᴀ Dᴏᴘʜᴀʀ\n\n{mention}"
+    "🌞 <b>Gᴏᴏᴅ Aғᴛᴇʀɴᴏᴏɴ</b> ☀️\n\n{mention}",
+    "🍵 <b>Cʜᴀɪ Pɪ Lᴏ, Aғᴛᴇʀɴᴏᴏɴ Hᴏ Gᴀʏɪ</b>\n\n{mention}",
+    "🌤️ <b>Hᴀʟᴋɪ Dᴏᴘʜᴀʀ, Aᴜʀ Tᴜᴍʜᴀʀᴀ Nᴀᴀᴍ</b> 💌\n\n{mention}",
+    "😴 <b>Sᴏɴᴀ Mᴀᴛ, Kᴀᴀᴍ Kᴀʀᴏ</b> 😜\n\n{mention}",
+    "📢 <b>Hᴇʏ Gᴏᴏᴅ Aғᴛᴇʀɴᴏᴏɴ!</b>\n\n{mention}",
+    "🌅 <b>Dᴏᴘʜᴀʀ Kᴀ Sᴜʀᴀᴊ Tᴇᴢ Hᴀɪ</b>\n\n{mention}",
+    "🥗 <b>Kʜᴀᴀɴᴀ Kʜᴀʏᴀ Kᴇ Nᴀʜɪ?</b>\n\n{mention}",
+    "☀️ <b>Tᴇᴢ Dʜᴜᴀᴘ Mᴇɪɴ Tʜᴀɴᴅᴀ Pᴀᴀɴɪ Pɪʏᴏ</b>\n\n{mention}",
+    "🌻 <b>Dᴏᴘʜᴀʀ Kᴀ Aʀᴀᴀᴍ Kᴀʀᴏ</b>\n\n{mention}",
+    "🍃 <b>Pᴀᴘᴇᴅ Kᴇ Nᴇᴇᴄʜᴇ Bᴀɪᴛʜᴋᴇ Bᴀᴀᴛᴇɪɴ</b>\n\n{mention}",
+    "🌸 <b>Lᴜɴᴄʜ Kᴀ Tɪᴍᴇ Hᴏ Gᴀʏᴀ</b>\n\n{mention}",
+    "🦋 <b>Dᴏᴘʜᴀʀ Kɪ Mᴀsᴛɪ Kᴀʀᴏ</b>\n\n{mention}",
+    "🍉 <b>Tᴀʀʙᴜᴊ Kʜᴀᴀᴋᴇ Tʜᴀɴᴅᴀ Hᴏ Jᴀᴏ</b>\n\n{mention}",
+    "🌺 <b>Aᴀsᴍᴀɴ Bʜɪ Sᴀᴀғ Hᴀɪ Aᴀᴊ</b>\n\n{mention}",
+    "🎵 <b>Gᴜɴɢᴜɴᴀᴛᴇ Hᴜᴇ Kᴀᴀᴍ Kᴀʀᴏ</b>\n\n{mention}",
+    "🌈 <b>Rᴀɴɢ Bɪʀᴀɴɢᴀ Dᴏᴘʜᴀʀ</b>\n\n{mention}"
 ]
 
 GN_MESSAGES = [
-    "🌙 Gᴏᴏᴅ Nɪɢʜᴛ\n\n{mention}",
-    "💤 Sᴏɴᴇ Cʜᴀʟᴏ, Kʜᴀᴡᴀʙᴏɴ Mᴇɪɴ Mɪʟᴛᴇ Hᴀɪɴ 😴\n\n{mention}",
-    "🌌 Aᴀsᴍᴀɴ Bʜɪ Sᴏ Gᴀʏᴀ, Aʙ Tᴜᴍʜɪ Bʜɪ Sᴏ Jᴀᴏ!\n\n{mention}",
-    "✨ Rᴀᴀᴛ Kᴀ Sᴀᴋᴏᴏɴ Tᴜᴍʜᴇɪ Mɪʟᴇ\n\n{mention}",
-    "🌃 Gᴏᴏᴅ Nɪɢʜᴛ & Sᴡᴇᴇᴛ Dʀᴇᴀᴍs\n\n{mention}",
-    "🌟 Sɪᴛᴀʀᴏɴ Kᴇ Sᴀᴀᴛʜ Sᴏɴᴀ\n\n{mention}",
-    "🕊️ Cᴀᴀɴᴅ Kɪ Rᴏsʜɴɪ Mᴇɪɴ Aᴀʀᴀᴀᴍ\n\n{mention}",
-    "🎭 Sᴀᴘɴᴏɴ Kᴀ Rᴀᴀᴊᴀ Bᴀɴᴋᴇ Sᴏɴᴀ\n\n{mention}",
-    "🌺 Rᴀᴀᴛ Kᴇ Pʜᴜᴀʟᴏɴ Sᴇ Mɪʟᴏ\n\n{mention}",
-    "💫 Cʜᴀᴀɴᴅ Mᴀᴀᴍᴀ Kʜᴀᴀɴɪ Sᴜɴᴀᴛᴇ Hᴀɪɴ\n\n{mention}",
-    "🎵 Lᴏʀɪ Kᴇ Sᴀᴀᴛʜ Sᴏɴᴀ\n\n{mention}",
-    "🌸 Sᴀᴀʀᴇ Gᴀᴍ Bʜᴜᴀʟᴀᴋᴇ Sᴏɴᴀ\n\n{mention}",
-    "🦋 Tɪᴛʟɪʏᴏɴ Kᴇ Sᴀᴀᴛʜ Sᴀᴘɴᴇ\n\n{mention}",
-    "🌈 Rᴀɴɢ Bɪʀᴀɴɢᴇ Kʜᴀᴀʙ Dᴇᴋʜɴᴀ\n\n{mention}",
-    "🕯️ Dɪʏᴇ Kɪ Rᴏsʜɴɪ Mᴇɪɴ Sᴏɴᴀ\n\n{mention}",
-    "🌅 Kᴀʟ Pʜɪʀ Mɪʟᴇɴɢᴇ Sᴜʙᴀʜ\n\n{mention}"
+    "🌙 <b>Gᴏᴏᴅ Nɪɢʜᴛ</b>\n\n{mention}",
+    "💤 <b>Sᴏɴᴇ Cʜᴀʟᴏ, Kʜᴀᴡᴀʙᴏɴ Mᴇɪɴ Mɪʟᴛᴇ Hᴀɪɴ</b> 😴\n\n{mention}",
+    "🌌 <b>Aᴀsᴍᴀɴ Bʜɪ Sᴏ Gᴀʏᴀ, Aʙ Tᴜᴍʜɪ Bʜɪ Sᴏ Jᴀᴏ!</b>\n\n{mention}",
+    "✨ <b>Rᴀᴀᴛ Kᴀ Sᴀᴋᴏᴏɴ Tᴜᴍʜᴇɪ Mɪʟᴇ</b>\n\n{mention}",
+    "🌃 <b>Gᴏᴏᴅ Nɪɢʜᴛ & Sᴡᴇᴇᴛ Dʀᴇᴀᴍs</b>\n\n{mention}",
+    "🌟 <b>Sɪᴛᴀʀᴏɴ Kᴇ Sᴀᴀᴛʜ Sᴏɴᴀ</b>\n\n{mention}",
+    "🕊️ <b>Cᴀᴀɴᴅ Kɪ Rᴏsʜɴɪ Mᴇɪɴ Aᴀʀᴀᴀᴍ</b>\n\n{mention}",
+    "🎭 <b>Sᴀᴘɴᴏɴ Kᴀ Rᴀᴀᴊᴀ Bᴀɴᴋᴇ Sᴏɴᴀ</b>\n\n{mention}",
+    "🌺 <b>Rᴀᴀᴛ Kᴇ Pʜᴜᴀʟᴏɴ Sᴇ Mɪʟᴏ</b>\n\n{mention}",
+    "💫 <b>Cʜᴀᴀɴᴅ Mᴀᴀᴍᴀ Kʜᴀᴀɴɪ Sᴜɴᴀᴛᴇ Hᴀɪɴ</b>\n\n{mention}",
+    "🎵 <b>Lᴏʀɪ Kᴇ Sᴀᴀᴛʜ Sᴏɴᴀ</b>\n\n{mention}",
+    "🌸 <b>Sᴀᴀʀᴇ Gᴀᴍ Bʜᴜᴀʟᴀᴋᴇ Sᴏɴᴀ</b>\n\n{mention}",
+    "🦋 <b>Tɪᴛʟɪʏᴏɴ Kᴇ Sᴀᴀᴛʜ Sᴀᴘɴᴇ</b>\n\n{mention}",
+    "🌈 <b>Rᴀɴɢ Bɪʀᴀɴɢᴇ Kʜᴀᴀʙ Dᴇᴋʜɴᴀ</b>\n\n{mention}",
+    "🕯️ <b>Dɪʏᴇ Kɪ Rᴏsʜɴɪ Mᴇɪɴ Sᴏɴᴀ</b>\n\n{mention}",
+    "🌅 <b>Kᴀʟ Pʜɪʀ Mɪʟᴇɴɢᴇ Sᴜʙᴀʜ</b>\n\n{mention}"
 ]
 
-# Helper function to get all non-bot, non-deleted users from a chat
 async def get_chat_users(chat_id):
     """Get all valid users from a chat (excluding bots and deleted accounts)"""
     users = []
@@ -76,30 +72,24 @@ async def get_chat_users(chat_id):
         users.append(member.user)
     return users
 
-# Generic tagging function
 async def tag_users(chat_id, messages, tag_type):
-    """Generic function to tag users with specified messages"""
+    """Generic function to tag users one by one with specified messages"""
     users = await get_chat_users(chat_id)
     
-    for i in range(0, len(users), 5):
+    for user in users:
         # Check if tagging was stopped
         if chat_id not in active_chats:
             break
             
-        batch = users[i:i+5]
-        # Create proper mentions - this will show as clickable names
-        mentions = " ".join([f"[{u.first_name}](tg://user?id={u.id})" for u in batch])
-        msg = random.choice(messages).format(mention=mentions)
+        mention = f"<b><a href='tg://user?id={user.id}'>{user.first_name}</a></b>"
+        msg = random.choice(messages).format(mention=mention)
         
-        # Use parse_mode=enums.ParseMode.MARKDOWN to properly format the mentions
-        await app.send_message(chat_id, msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.MARKDOWN)
-        await asyncio.sleep(2)
+        await app.send_message(chat_id, msg, disable_web_page_preview=True)
+        await asyncio.sleep(3)
     
-    # Clean up and send completion message
     active_chats.pop(chat_id, None)
-    await app.send_message(chat_id, f"✅ {tag_type} Tᴀɢɢɪɴɢ Dᴏɴᴇ!")
+    await app.send_message(chat_id, f"✅ <b>{tag_type} Tᴀɢɢɪɴɢ Dᴏɴᴇ!</b>")
 
-# =================== GOOD MORNING COMMANDS ===================
 
 @app.on_message(filters.command("gmtag") & filters.group)
 async def gmtag(_, message: Message):
@@ -107,10 +97,10 @@ async def gmtag(_, message: Message):
     chat_id = message.chat.id
     
     if chat_id in active_chats:
-        return await message.reply("⚠️ Gᴏᴏᴅ Mᴏʀɴɪɴɢ Tᴀɢɢɪɴɢ Aʟʀᴇᴀᴅʏ Rᴜɴɴɪɴɢ.")
+        return await message.reply("⚠️ <b>Gᴏᴏᴅ Mᴏʀɴɪɴɢ Tᴀɢɢɪɴɢ Aʟʀᴇᴀᴅʏ Rᴜɴɴɪɴɢ.</b>")
     
     active_chats[chat_id] = True
-    await message.reply("☀️ Gᴏᴏᴅ Mᴏʀɴɪɴɢ Tᴀɢɢɪɴɢ Sᴛᴀʀᴛᴇᴅ...")
+    await message.reply("☀️ <b>Gᴏᴏᴅ Mᴏʀɴɪɴɢ Tᴀɢɢɪɴɢ Sᴛᴀʀᴛᴇᴅ...</b>")
     
     await tag_users(chat_id, GM_MESSAGES, "Gᴏᴏᴅ Mᴏʀɴɪɴɢ")
 
@@ -121,11 +111,10 @@ async def gmstop(_, message: Message):
     
     if chat_id in active_chats:
         del active_chats[chat_id]
-        await message.reply("🛑 Gᴏᴏᴅ Mᴏʀɴɪɴɢ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.")
+        await message.reply("🛑 <b>Gᴏᴏᴅ Mᴏʀɴɪɴɢ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.</b>")
     else:
-        await message.reply("❌ Nᴏᴛʜɪɴɢ Rᴜɴɴɪɴɢ.")
+        await message.reply("❌ <b>Nᴏᴛʜɪɴɢ Rᴜɴɴɪɴɢ.</b>")
 
-# =================== GOOD AFTERNOON COMMANDS ===================
 
 @app.on_message(filters.command("gatag") & filters.group)
 async def gatag(_, message: Message):
@@ -133,10 +122,10 @@ async def gatag(_, message: Message):
     chat_id = message.chat.id
     
     if chat_id in active_chats:
-        return await message.reply("⚠️ Aғᴛᴇʀɴᴏᴏɴ Tᴀɢɢɪɴɢ Aʟʀᴇᴀᴅʏ Oɴ.")
+        return await message.reply("⚠️ <b>Aғᴛᴇʀɴᴏᴏɴ Tᴀɢɢɪɴɢ Aʟʀᴇᴀᴅʏ Oɴ.</b>")
     
     active_chats[chat_id] = True
-    await message.reply("☀️ Aғᴛᴇʀɴᴏᴏɴ Tᴀɢɢɪɴɢ Sᴛᴀʀᴛᴇᴅ...")
+    await message.reply("☀️ <b>Aғᴛᴇʀɴᴏᴏɴ Tᴀɢɢɪɴɢ Sᴛᴀʀᴛᴇᴅ...</b>")
     
     await tag_users(chat_id, GA_MESSAGES, "Aғᴛᴇʀɴᴏᴏɴ")
 
@@ -147,11 +136,10 @@ async def gastop(_, message: Message):
     
     if chat_id in active_chats:
         del active_chats[chat_id]
-        await message.reply("🛑 Aғᴛᴇʀɴᴏᴏɴ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.")
+        await message.reply("🛑 <b>Aғᴛᴇʀɴᴏᴏɴ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.</b>")
     else:
-        await message.reply("❌ Nᴏᴛʜɪɴɢ Rᴜɴɴɪɴɢ.")
+        await message.reply("❌ <b>Nᴏᴛʜɪɴɢ Rᴜɴɴɪɴɢ.</b>")
 
-# =================== GOOD NIGHT COMMANDS ===================
 
 @app.on_message(filters.command("gntag") & filters.group)
 async def gntag(_, message: Message):
@@ -159,10 +147,10 @@ async def gntag(_, message: Message):
     chat_id = message.chat.id
     
     if chat_id in active_chats:
-        return await message.reply("⚠️ Nɪɢʜᴛ Tᴀɢɢɪɴɢ Aʟʀᴇᴀᴅʏ Oɴ.")
+        return await message.reply("⚠️ <b>Nɪɢʜᴛ Tᴀɢɢɪɴɢ Aʟʀᴇᴀᴅʏ Oɴ.</b>")
     
     active_chats[chat_id] = True
-    await message.reply("🌙 Nɪɢʜᴛ Tᴀɢɢɪɴɢ Sᴛᴀʀᴛᴇᴅ...")
+    await message.reply("🌙 <b>Nɪɢʜᴛ Tᴀɢɢɪɴɢ Sᴛᴀʀᴛᴇᴅ...</b>")
     
     await tag_users(chat_id, GN_MESSAGES, "Gᴏᴏᴅ Nɪɢʜᴛ")
 
@@ -173,11 +161,10 @@ async def gnstop(_, message: Message):
     
     if chat_id in active_chats:
         del active_chats[chat_id]
-        await message.reply("🛑 Nɪɢʜᴛ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.")
+        await message.reply("🛑 <b>Nɪɢʜᴛ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.</b>")
     else:
-        await message.reply("❌ Nᴏᴛʜɪɴɢ Rᴜɴɴɪɴɢ.")
+        await message.reply("❌ <b>Nᴏᴛʜɪɴɢ Rᴜɴɴɪɴɢ.</b>")
 
-# =================== UTILITY COMMANDS ===================
 
 @app.on_message(filters.command("stopall") & filters.group)
 async def stopall(_, message: Message):
@@ -186,33 +173,44 @@ async def stopall(_, message: Message):
     
     if chat_id in active_chats:
         del active_chats[chat_id]
-        await message.reply("🛑 Aʟʟ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.")
+        await message.reply("🛑 <b>Aʟʟ Tᴀɢɢɪɴɢ Sᴛᴏᴘᴘᴇᴅ.</b>")
     else:
-        await message.reply("❌ Nᴏ Aᴄᴛɪᴠᴇ Tᴀɢɢɪɴɢ Fᴏᴜɴᴅ.")
+        await message.reply("❌ <b>Nᴏ Aᴄᴛɪᴠᴇ Tᴀɢɢɪɴɢ Fᴏᴜɴᴅ.</b>")
 
 @app.on_message(filters.command("taghelp") & filters.group)
 async def taghelp(_, message: Message):
     """Show help message for tagging commands"""
     help_text = """
-🏷️ **Tagging Commands Help**
+🏷️ <b>Tagging Commands Help</b>
 
-**Good Morning:**
-• `/gmtag` - Start Good Morning tagging
-• `/gmstop` - Stop Good Morning tagging
+<b>Good Morning:</b>
+• <code>/gmtag</code> - Start Good Morning tagging
+• <code>/gmstop</code> - Stop Good Morning tagging
 
-**Good Afternoon:**
-• `/gatag` - Start Good Afternoon tagging  
-• `/gastop` - Stop Good Afternoon tagging
+<b>Good Afternoon:</b>
+• <code>/gatag</code> - Start Good Afternoon tagging  
+• <code>/gastop</code> - Stop Good Afternoon tagging
 
-**Good Night:**
-• `/gntag` - Start Good Night tagging
-• `/gnstop` - Stop Good Night tagging
+<b>Good Night:</b>
+• <code>/gntag</code> - Start Good Night tagging
+• <code>/gnstop</code> - Stop Good Night tagging
 
-**Utility:**
-• `/stopall` - Stop all active tagging
-• `/taghelp` - Show this help message
+<b>Utility:</b>
+• <code>/stopall</code> - Stop all active tagging
+• <code>/taghelp</code> - Show this help message
 
-**Note:** Only one tagging session can run per chat at a time.
+<b>Note:</b> Now tags one user at a time with 3 second delay between each user. Only one tagging session can run per chat at a time.
 """
     await message.reply(help_text)
 
+
+# ©️ Copyright Reserved - @NoxxOP  Nand Yaduwanshi
+
+# ===========================================
+# ©️ 2025 Nand Yaduwanshi (aka @NoxxOP)
+# 🔗 GitHub : https://github.com/NoxxOP/ShrutiMusic
+# 📢 Telegram Channel : https://t.me/ShrutiBots
+# ===========================================
+
+
+# ❤️ Love From ShrutiBots
