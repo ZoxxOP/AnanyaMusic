@@ -50,6 +50,8 @@ async def start_pm(client, message: Message, _):
                 video=config.START_VIDEO_URL,
                 caption=_["help_1"].format(config.SUPPORT_GROUP),
                 protect_content=True,
+
+has_spoiler=True,
                 reply_markup=keyboard,
             )
 
