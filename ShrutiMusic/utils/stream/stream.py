@@ -110,6 +110,7 @@ async def stream(
                         user_name,
                     ),
                     reply_markup=InlineKeyboardMarkup(button),
+                    has_spoiler=True,
                 )
                 db[chat_id][0]["mystic"] = run
                 db[chat_id][0]["markup"] = "stream"
@@ -129,6 +130,7 @@ async def stream(
                 photo=carbon,
                 caption=_["play_21"].format(position, link),
                 reply_markup=upl,
+                has_spoiler=True,
             )
     elif streamtype == "youtube":
         link = result["link"]
@@ -204,6 +206,7 @@ async def stream(
                     user_name,
                 ),
                 reply_markup=InlineKeyboardMarkup(button),
+                has_spoiler=True,
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "stream"
@@ -254,6 +257,7 @@ async def stream(
                     config.SUPPORT_GROUP, title[:23], duration_min, user_name
                 ),
                 reply_markup=InlineKeyboardMarkup(button),
+                has_spoiler=True,
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
@@ -306,6 +310,7 @@ async def stream(
                 photo=config.TELEGRAM_VIDEO_URL if video else config.TELEGRAM_AUDIO_URL,
                 caption=_["stream_1"].format(link, title[:23], duration_min, user_name),
                 reply_markup=InlineKeyboardMarkup(button),
+                has_spoiler=True,
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
@@ -372,6 +377,7 @@ async def stream(
                     user_name,
                 ),
                 reply_markup=InlineKeyboardMarkup(button),
+                has_spoiler=True,
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
@@ -422,9 +428,8 @@ async def stream(
                 photo=config.STREAM_IMG_URL,
                 caption=_["stream_2"].format(user_name),
                 reply_markup=InlineKeyboardMarkup(button),
+                has_spoiler=True,
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
             await mystic.delete()
-
-
