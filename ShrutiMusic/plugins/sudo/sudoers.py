@@ -1,5 +1,5 @@
 from pyrogram import filters
-from pyrogram.types import Message
+from pyrogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from ShrutiMusic import app
 from ShrutiMusic.misc import SUDOERS
 from ShrutiMusic.utils.database import add_sudo, remove_sudo
@@ -7,7 +7,6 @@ from ShrutiMusic.utils.decorators.language import language
 from ShrutiMusic.utils.extraction import extract_user
 from ShrutiMusic.utils.inline import close_markup
 from config import BANNED_USERS, OWNER_ID
-
 
 @app.on_message(filters.command(["addsudo"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]) & filters.user(OWNER_ID))
 @language
