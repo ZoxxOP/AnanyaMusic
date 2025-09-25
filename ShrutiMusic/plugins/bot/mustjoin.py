@@ -5,7 +5,7 @@ from ShrutiMusic import app
 
 #--------------------------
 
-MUST_JOIN = "About_Akashh"
+MUST_JOIN = "AnanyaBots"
 #------------------------
 @app.on_message(filters.incoming & filters.private, group=-1)
 async def must_join_channel(app: Client, msg: Message):
