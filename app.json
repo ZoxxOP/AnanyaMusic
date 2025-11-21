@@ -1,7 +1,7 @@
 {
   "name": "Ananya Music",
   "description": "A Telegram Music Player Bot, written in Python with Pyrogram and Py-Tgcalls.",
-  "logo": "https://files.catbox.moe/30p0du.jpg",
+  "logo": "https://files.catbox.moe/f7j5xu.jpg",
   "keywords": [
     "python3",
     "telegram",
@@ -127,7 +127,7 @@
       "value": "",
       "required": false
     },
-    "KANCHAN_REPO": {
+    "ANANYA_REPO": {
       "description": "Vedio link appears with entertainment button",
       "value": "",
       "required": false
