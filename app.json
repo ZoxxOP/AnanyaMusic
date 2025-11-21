@@ -1,0 +1,148 @@
+{
+  "name": "Ananya Music",
+  "description": "A Telegram Music Player Bot, written in Python with Pyrogram and Py-Tgcalls.",
+  "logo": "https://files.catbox.moe/30p0du.jpg",
+  "keywords": [
+    "python3",
+    "telegram",
+    "bot",
+    "AnanyaBots",
+    "MusicBot",
+    "telegram-bot",
+    "pyrogram"
+  ],
+  "env": {
+    "API_ID": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": "24569721",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": "b0081b01a3f015d9c76f5ed9e7b20271",
+      "required": true
+    },
+    "API_KEY": {
+      "description": "Get this value from https://panel.thequickearn.xyz/signup?ref=NGBM6HYNQKU",
+      "value": "",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "A Bot's token from Botfather",
+      "value": "",
+      "required": true
+    },
+    "MONGO_DB_URI": {
+      "description": "Get a mongodb url from https://cloud.mongodb.com.",
+      "value": "mongodb+srv://pusers:adcreation@adcreation.k8oapou.mongodb.net/?appName=ADCREATION",
+      "required": true
+    },
+    "OWNER_ID": {
+      "description": "The user id of user whom you would like to add as OWNER.",
+      "value": "",
+      "required": true
+    },
+    "OWNER_USERNAME": {
+      "description": "The username of the owner (without @)",
+      "value": "WTF_NoHope",
+      "required": true
+    },
+    "BOT_USERNAME": {
+      "description": "The username of your bot (without @)",
+      "value": "Ananya_VcMusic_Bot",
+      "required": true
+    },
+    "UPSTREAM_REPO": {
+      "description": "URL of your GitHub repository",
+      "value": "https://github.com/ZoxxOP/AnanyaMusic",
+      "required": false
+    },
+    "STRING_SESSION": {
+      "description": "A Pyrogram v2 String Session from Replit.",
+      "value": "",
+      "required": true
+    },
+    "GIT_TOKEN": {
+      "description": "Your GitHub personal access token (if needed for private repos)",
+      "value": "",
+      "required": false
+    },
+    "HEROKU_API_KEY": {
+      "description": "Your Heroku account's API key",
+      "value": "",
+      "required": false
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Your heroku app name",
+      "value": "",
+      "required": false
+    },
+    "LOG_GROUP_ID": {
+      "description": "Your Log Group ID, add your bot and promote as an admin with full rights!. Do not ever try to put channel ID here.",
+      "value": "-1003018946118",
+      "required": true
+    },
+    "SUPPORT_GROUP": {
+      "description": "Your support group username (without @)",
+      "value": "https://t.me/AnanyaBotsupport",
+      "required": false
+    },
+    "SUPPORT_CHANNEL": {
+      "description": "Your support channel username (without @)",
+      "value": "https://t.me/AnanyaBots",
+      "required": false
+    },
+    "INSTAGRAM": {
+      "description": "Your Instagram profile link",
+      "value": "https://instagram.com/akash_daksh1c",
+      "required": false
+    },
+    "YOUTUBE": {
+      "description": "Your YouTube channel link",
+      "value": "https://youtube.com/@akash_editz",
+      "required": false
+    },
+    "GITHUB": {
+      "description": "Your GitHub profile link",
+      "value": "https://github.com/ZoxxOP",
+      "required": false
+    },
+    "DONATE": {
+      "description": "Link where people can support/donate",
+      "value": "https://t.me/AnanyaBots/128",
+      "required": false
+    },
+    "COOKIE_URL": {
+      "description": "An additional API key for your bot (if needed)",
+      "value": "Need , IF You Didn't add Cookies file in cookies folder",
+      "required": false
+    },
+    "START_IMG_URL": {
+      "description": "Image that appears with the /start command",
+      "value": "",
+      "required": false
+    },
+    "START_VIDEO_URL": {
+      "description": "Fill your /start command video link",
+      "value": "",
+      "required": false
+    },
+    "KANCHAN_REPO": {
+      "description": "Vedio link appears with entertainment button",
+      "value": "",
+      "required": false
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    }
+  ],
+  "stack": "container"
+}

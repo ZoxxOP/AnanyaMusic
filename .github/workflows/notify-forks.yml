@@ -1,0 +1,26 @@
+name: Notify Forks About Update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify forks via issue
+        run: |
+          echo "Checking forked repos for update notification..."
+
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/ZoxxOP/AnanyaMusic/forks \
+            | jq -r '.[].full_name' \
+            | while read repo; do
+              echo "Creating issue in fork: $repo"
+              curl -X POST \
+                -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" \
+                -H "Accept: application/vnd.github.v3+json" \
+                https://api.github.com/repos/$repo/issues \
+                -d "{\"title\": \"🔄 New Update Available\", \"body\": \"Your fork of [AnanyaMusic](https://github.com/ZoxxOP/AnanyaMusic) is behind. Please merge the latest changes from the upstream repo.\n\nThanks! 🙌\"}"
+            done

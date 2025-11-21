@@ -1,0 +1,35 @@
+services:
+  - type: worker
+    name: kanchanmusic
+    runtime: python
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: bash start
+    envVars:
+      - key: API_ID
+        value: "24569721"
+      - key: API_HASH
+        value: "b0081b01a3f015d9c76f5ed9e7b20271"
+      - key: BOT_TOKEN
+        value: ""
+      - key: MONGO_DB_URI
+        value: "mongodb+srv://Akash:Akash@akash.cbqfo1w.mongodb.net/?retryWrites=true&w=majority&appName=Akash"
+      - key: OWNER_ID
+        value: "7853121219"
+      - key: OWNER_USERNAME
+        value: ""
+      - key: STRING_SESSION
+        value: ""
+      - key: GIT_TOKEN
+        value: ""
+      - key: HEROKU_API_KEY
+        value: ""
+      - key: HEROKU_APP_NAME
+        value: ""
+      - key: LOG_GROUP_ID
+        value: "-1003018946118"
+      - key: SUPPORT_GROUP
+        value: "https://t.me/AnanyaBotsupport"
+      - key: SUPPORT_CHANNEL
+        value: "https://t.me/AnanyaBots"
+      - key: COOKIE_URL
+        value: "Need , IF You Didn't add Cookies file in cookies folder"
