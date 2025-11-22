@@ -119,17 +119,17 @@
     },
     "START_IMG_URL": {
       "description": "Image that appears with the /start command",
-      "value": "",
+      "value": "https://files.catbox.moe/stf19c.jpg",
       "required": false
     },
     "START_VIDEO_URL": {
       "description": "Fill your /start command video link",
-      "value": "",
+      "value": "https://files.catbox.moe/vykrv0.mp4",
       "required": false
     },
     "ANANYA_REPO": {
       "description": "Vedio link appears with entertainment button",
-      "value": "",
+      "value": "https://files.catbox.moe/o6me7d.mp4",
       "required": false
     }
   },
