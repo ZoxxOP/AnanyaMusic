@@ -19,7 +19,6 @@
 # Contact for permissions:
 # Email: akp954834@gmail.com
 
-
 import time
 import random
 
@@ -55,29 +54,32 @@ RANDOM_STICKERS = [
     "CAACAgUAAxkBAAEPblVo0snJAYHKLSJvR-ueI3r2hbbgxgACThYAAlHgKFQAARW8aAfbrqc2BA"
 ]
 
+# ===============================================================
+# START COMMAND - PRIVATE
+# ===============================================================
+
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
-    # Sticker bhejna disable
-    # random_sticker = random.choice(RANDOM_STICKERS)
-    # await message.reply_sticker(sticker=random_sticker)
-    
+
     await add_served_user(message.from_user.id)
 
-    # Reaction user ko turant bhejna
+    # Reaction
     emojis = ["👍", "❤️", "💯", "😁", "🤝", "🤔", "😢"]
     await app.send_reaction(message.chat.id, message.id, random.choice(emojis))
 
+    # If command has arguments
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
 
+        # HELP COMMAND
         if name[0:4] == "help":
-            keyboard = help_pannel(_)
-            return await message.reply_video(
-                video=config.START_VIDEO_URL,
+            keyboard = help_pannel_page1(_)
+            return await message.reply_photo(
+                photo=config.START_IMG_URL,
                 caption=_["help_1"].format(config.SUPPORT_GROUP),
                 protect_content=True,
-                has_spoiler=True,
+                has_spoiler=False, 
                 reply_markup=keyboard,
             )
 
@@ -86,9 +88,9 @@ async def start_pm(client, message: Message, _):
             if await is_on_off(2):
                 return await app.send_message(
                     chat_id=config.LOG_GROUP_ID,
-                    text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <b>sᴜᴅᴏʟɪsᴛ</b>.\n\n"
-                         f"<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n"
-                         f"<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
+                    text=f"{message.from_user.mention} used /start to check <b>sudo list</b>.\n\n"
+                         f"<b>User ID :</b> <code>{message.from_user.id}</code>\n"
+                         f"<b>Username :</b> @{message.from_user.username}",
                 )
             return
 
@@ -97,6 +99,7 @@ async def start_pm(client, message: Message, _):
             query = (str(name)).replace("info_", "", 1)
             query = f"https://www.youtube.com/watch?v={query}"
             results = VideosSearch(query, limit=1)
+
             for result in (await results.next())["result"]:
                 title = result["title"]
                 duration = result["duration"]
@@ -119,6 +122,7 @@ async def start_pm(client, message: Message, _):
                     ],
                 ]
             )
+
             await m.delete()
             await app.send_photo(
                 chat_id=message.chat.id,
@@ -131,47 +135,55 @@ async def start_pm(client, message: Message, _):
             if await is_on_off(2):
                 return await app.send_message(
                     chat_id=config.LOG_GROUP_ID,
-                    text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <b>ᴛʀᴀᴄᴋ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</b>.\n\n"
-                         f"<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n"
-                         f"<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
+                    text=f"{message.from_user.mention} checked <b>track info</b>.\n\n"
+                         f"<b>User ID :</b> <code>{message.from_user.id}</code>\n"
+                         f"<b>Username :</b> @{message.from_user.username}",
                 )
 
     else:
         out = private_panel(_)
         UP, CPU, RAM, DISK = await bot_sys_stats()
-        await message.reply_video(
-            video=config.START_VIDEO_URL,
-            caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM),
+
+        await message.reply_photo(
+            photo=config.START_IMG_URL,
+            caption=_["start_2"].format(
+                message.from_user.mention, app.mention, UP, DISK, CPU, RAM
+            ),
             reply_markup=InlineKeyboardMarkup(out),
-            has_spoiler=True,
+            has_spoiler=False,
         )
 
     if await is_on_off(2):
         await app.send_message(
             chat_id=config.LOG_GROUP_ID,
-            text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ.\n\n"
-                 f"<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n"
-                 f"<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
+            text=f"{message.from_user.mention} started the bot.\n\n"
+                 f"<b>User ID :</b> <code>{message.from_user.id}</code>\n"
+                 f"<b>Username :</b> @{message.from_user.username}",
         )
 
+
+# ===============================================================
+# START COMMAND - GROUPS
+# ===============================================================
 
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def start_gp(client, message: Message, _):
-    # Sticker bhejna disable
-    # random_sticker = random.choice(RANDOM_STICKERS)
-    # await message.reply_sticker(sticker=random_sticker)
-    
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
+
     await message.reply_photo(
         photo=config.START_IMG_URL,
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
-        has_spoiler=True,
+        has_spoiler=True,  # Group me spoiler same rehne diya
     )
     return await add_served_chat(message.chat.id)
 
+
+# ===============================================================
+# WELCOME HANDLER
+# ===============================================================
 
 @app.on_message(filters.new_chat_members, group=-1)
 async def welcome(client, message: Message):
@@ -179,15 +191,19 @@ async def welcome(client, message: Message):
         try:
             language = await get_lang(message.chat.id)
             _ = get_string(language)
+
             if await is_banned_user(member.id):
                 try:
                     await message.chat.ban_member(member.id)
                 except:
                     pass
+
             if member.id == app.id:
+
                 if message.chat.type != ChatType.SUPERGROUP:
                     await message.reply_text(_["start_4"])
                     return await app.leave_chat(message.chat.id)
+
                 if message.chat.id in await blacklisted_chats():
                     await message.reply_text(
                         _["start_5"].format(
@@ -199,11 +215,8 @@ async def welcome(client, message: Message):
                     )
                     return await app.leave_chat(message.chat.id)
 
-                # Sticker bhejna disable
-                # random_sticker = random.choice(RANDOM_STICKERS)
-                # await message.reply_sticker(sticker=random_sticker)
-
                 out = start_panel(_)
+
                 await message.reply_photo(
                     photo=config.START_IMG_URL,
                     caption=_["start_3"].format(
@@ -215,19 +228,17 @@ async def welcome(client, message: Message):
                     reply_markup=InlineKeyboardMarkup(out),
                     has_spoiler=True,
                 )
+
                 await add_served_chat(message.chat.id)
                 await message.stop_propagation()
+
         except Exception as ex:
             print(ex)
 
 
+# ===============================================================
 # ©️ Copyright Reserved - @ZoxxOP  Akash Dakshwanshi
-
-# ===========================================
-# ©️ 2025 Akash Dakshwanshi (aka @ZoxxOP)
-# 🔗 GitHub : https://github.com/ZoxxOP/AnanyaMusic
-# 📢 Telegram Channel : https://t.me/AnanyaBots
-# ===========================================
-
-
+# GitHub : https://github.com/ZoxxOP/AnanyaMusic
+# Telegram Channel : https://t.me/AnanyaBots
 # ❤️ Love From AnanyaBots
+# ===============================================================
