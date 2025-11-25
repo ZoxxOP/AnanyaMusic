@@ -1,3 +1,4 @@
+pyrofork
 gTTS
 aiofiles
 aiohttp
@@ -24,11 +25,14 @@ requests
 speedtest-cli
 spotipy
 tgcrypto
-telegraph
-telethon
+telegraph 
 unidecode
 youtube-search
 youtube-search-python
 py-yt-search
 yt-dlp
-
+# ===========================================
+# ©️ 2025 Akash Dakshwanshi , aka @ZoxxOP
+# 🔗 GitHub : https://github.com/ZoxxOP/AnanyaMusic
+# 📢 Telegram Channel : https://t.me/AnanyaBots
+# ===========================================
