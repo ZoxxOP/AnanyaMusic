@@ -92,26 +92,6 @@
       "value": "https://t.me/AnanyaBots",
       "required": false
     },
-    "INSTAGRAM": {
-      "description": "Your Instagram profile link",
-      "value": "https://instagram.com/akash_daksh1c",
-      "required": false
-    },
-    "YOUTUBE": {
-      "description": "Your YouTube channel link",
-      "value": "https://youtube.com/@akash_editz",
-      "required": false
-    },
-    "GITHUB": {
-      "description": "Your GitHub profile link",
-      "value": "https://github.com/ZoxxOP",
-      "required": false
-    },
-    "DONATE": {
-      "description": "Link where people can support/donate",
-      "value": "https://t.me/AnanyaBots/128",
-      "required": false
-    },
     "COOKIE_URL": {
       "description": "An additional API key for your bot (if needed)",
       "value": "Need , IF You Didn't add Cookies file in cookies folder",
@@ -120,11 +100,6 @@
     "START_IMG_URL": {
       "description": "Image that appears with the /start command",
       "value": "https://files.catbox.moe/stf19c.jpg",
-      "required": false
-    },
-    "START_VIDEO_URL": {
-      "description": "Fill your /start command video link",
-      "value": "https://files.catbox.moe/vykrv0.mp4",
       "required": false
     },
     "ANANYA_REPO": {
